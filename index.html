@@ -1,21 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- ZEFFY_REGISTRATION_URL = PASTE_HERE -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Austin Machitar Memorial Foundation</title>
+<title>Austin C. Machitar Foundation</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;600&family=Roboto+Mono:wght@400&display=swap');
 
+/* ===== Theme: Guardian Crest (white · blue · gold, from the ACMF seal) ===== */
 :root {
-  --color-bg:          #FAF6EF;
+  --color-bg:          #F4F7FA;  /* cool blue-tinted off-white */
   --color-surface:     #FFFFFF;
-  --color-navy:        #1C2B3A;
-  --color-gold:        #C8922A;
-  --color-rust:        #A64B2A;
-  --color-green:       #3B5E45;
-  --color-muted:       #6B5E4E;
-  --color-border:      #E0D5C5;
+  --color-navy:        #16263A;  /* deep navy from the logo ring */
+  --color-gold:        #C8922A;  /* heraldic gold border */
+  --color-gold-bright: #E0A93D;  /* lighter gold for hovers */
+  --color-red:         #C8922A;  /* legacy "red" mapped to gold for primary CTAs */
+  --color-green:       #1C3550;  /* deep slate-navy band (was forest green) */
+  --color-muted:       #5A6776;  /* slate body text */
+  --color-border:      #D6DEE7;  /* cool hairline */
+  /* Logo accent palette */
+  --color-orange:      #E07B1A;
+  --color-blue:        #2E6DB4;  /* skyline blue accent */
+  /* Motion */
+  --ease-out-quart:    cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -60,11 +68,11 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
   padding: 0.9rem 1.5rem;
 }
 .nav-logo { display: flex; align-items: center; gap: 0.75rem; }
-.nav-logo .amf {
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
-  font-size: 1.6rem;
-  color: var(--color-gold);
+.nav-logo-img {
+  display: block;
+  height: 40px;
+  width: auto;
+  max-width: 220px;
 }
 .nav-logo .divider {
   width: 1px;
@@ -118,6 +126,13 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
   border-bottom: 2px solid var(--color-gold);
 }
 .hero-content { max-width: 760px; }
+.hero-logo {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(320px, 80%);
+  margin: 0 auto 1.5rem;
+}
 .hero .eyebrow { display: block; margin-bottom: 1.2rem; }
 .hero h1 {
   font-weight: 900;
@@ -147,10 +162,11 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
   text-decoration: none;
   border-radius: 0;
   cursor: pointer;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition: background 0.2s var(--ease-out-quart), color 0.2s var(--ease-out-quart), transform 0.1s var(--ease-out-quart);
 }
-.btn-primary { background: var(--color-rust); color: #fff; border: 2px solid var(--color-rust); }
-.btn-primary:hover { background: #8a3e22; border-color: #8a3e22; }
+.btn:active { transform: scale(0.97); }
+.btn-primary { background: var(--color-gold); color: var(--color-navy); border: 2px solid var(--color-gold); }
+.btn-primary:hover { background: var(--color-gold-bright); border-color: var(--color-gold-bright); }
 .btn-secondary { background: transparent; color: var(--color-gold); border: 2px solid var(--color-gold); }
 .btn-secondary:hover { background: var(--color-gold); color: var(--color-navy); }
 
@@ -171,15 +187,34 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
 }
 
 .fade-in {
-  animation: fadeIn 0.8s ease both;
+  animation: fadeIn 0.8s var(--ease-out-quart) both;
 }
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
+
+/* ---------- Scroll reveal ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s var(--ease-out-quart), transform 0.6s var(--ease-out-quart);
+  transition-delay: calc(var(--i, 0) * 80ms);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .fade-in { animation: none; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* ---------- Section headings ---------- */
@@ -214,7 +249,7 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
 .about-text h2 { font-weight: 700; font-size: clamp(1.6rem, 3.5vw, 2.4rem); margin-bottom: 1.2rem; }
 .about-text p { margin-bottom: 1rem; color: var(--color-muted); }
 .pull-quote {
-  border-left: 3px solid var(--color-rust);
+  border-left: 3px solid var(--color-blue);
   padding-left: 1.2rem;
   margin-top: 1.5rem;
   font-family: 'Playfair Display', serif;
@@ -237,6 +272,11 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
   border-top: 4px solid var(--color-gold);
   border-radius: 0;
   padding: 2rem 1.6rem;
+  transition: transform 0.25s var(--ease-out-quart), box-shadow 0.25s var(--ease-out-quart);
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(22, 38, 58, 0.12);
 }
 .card svg { margin-bottom: 1rem; }
 .card h3 { font-weight: 700; font-size: 1.35rem; margin-bottom: 0.7rem; }
@@ -246,7 +286,7 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
   margin-top: 1.1rem;
   font-family: 'Source Sans 3', sans-serif;
   font-weight: 600;
-  color: var(--color-rust);
+  color: var(--color-blue);
   text-decoration: none;
   border-bottom: 2px solid var(--color-gold);
   padding-bottom: 2px;
@@ -286,60 +326,7 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
   color: var(--color-bg);
 }
 .tournament-desc { color: rgba(250, 246, 239, 0.85); margin-top: 1.5rem; }
-
-.form-subhead { color: rgba(250, 246, 239, 0.8); margin-bottom: 1.5rem; }
-.field { margin-bottom: 1.2rem; }
-.field label {
-  display: block;
-  font-family: 'Roboto Mono', monospace;
-  font-size: 0.78rem;
-  letter-spacing: 0.05em;
-  color: var(--color-gold);
-  margin-bottom: 0.4rem;
-}
-.field .note { color: rgba(250, 246, 239, 0.55); text-transform: none; }
-.field input,
-.field select,
-.field textarea {
-  width: 100%;
-  padding: 0.7rem 0.8rem;
-  font-family: 'Source Sans 3', sans-serif;
-  font-size: 1rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 0;
-  color: #fff;
-}
-.field select option { color: #000; }
-.field input::placeholder,
-.field textarea::placeholder { color: rgba(255, 255, 255, 0.5); }
-.field input:focus,
-.field select:focus,
-.field textarea:focus { outline: none; border-color: var(--color-gold); }
-
-.btn-submit {
-  width: 100%;
-  padding: 0.95rem;
-  background: var(--color-rust);
-  color: #fff;
-  font-family: 'Source Sans 3', sans-serif;
-  font-weight: 600;
-  font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  border: none;
-  border-radius: 0;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-.btn-submit:hover { background: #8a3e22; }
-.form-error {
-  color: var(--color-rust);
-  font-weight: 600;
-  margin-top: 0.8rem;
-  display: none;
-}
-.tournament .form-error { color: #F0C0AE; }
+.tournament-desc a { color: var(--color-gold); text-decoration: underline; }
 
 /* ---------- Scholarships ---------- */
 .intro-text { max-width: 720px; margin: 0 auto 1rem; color: var(--color-muted); }
@@ -378,6 +365,21 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
 .tier-silver .sponsor-box { min-height: 100px; }
 .tier-community { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
 .tier-community .sponsor-box { min-height: 80px; }
+
+.package-list { list-style: none; max-width: 560px; margin: 0 auto; }
+.package-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.package-list li span:last-child {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 600;
+  color: var(--color-gold);
+  white-space: nowrap;
+}
 
 .sponsor-cta {
   border: 2px solid var(--color-gold);
@@ -476,9 +478,9 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
 <nav class="nav">
   <div class="nav-inner">
     <a href="#" class="nav-logo" style="text-decoration:none;">
-      <span class="amf">AMF</span>
+      <img class="nav-logo-img" src="/assets/logo.png" alt="Austin C. Machitar Foundation">
       <span class="divider"></span>
-      <span class="full-name">Austin Machitar Foundation</span>
+      <span class="full-name">Austin C. Machitar Foundation</span>
     </a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
@@ -497,21 +499,21 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
 <!-- ===== Hero ===== -->
 <header class="hero">
   <div class="hero-content fade-in">
+    <img class="hero-logo" src="/assets/logo.png" alt="Austin C. Machitar Foundation">
     <span class="eyebrow">IN HONOR OF OFFICER</span>
     <h1>Austin <span class="accent">Machitar</span></h1>
-    <!-- CLIENT: Replace with one sentence about who Austin was and what this foundation does -->
-    <p class="hero-subhead">A ballplayer, a protector, and a friend — honoring Austin's legacy by supporting the next generation of South Bay baseball student athletes.</p>
+    <p class="hero-subhead">Honoring the life and service of San Diego Police Officer Austin C. Machitar by supporting Otay Ranch High School students who pursue lives of public service.</p>
     <div class="cta-row">
       <a href="#contact" class="btn btn-primary">Donate Now</a>
       <a href="#about" class="btn btn-secondary">Learn More</a>
     </div>
     <div class="badge">
       <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="17" cy="17" r="13" stroke="#C8922A" stroke-width="1.5"/>
-        <path d="M9 11 C13 14, 13 20, 9 23" stroke="#C8922A" stroke-width="1.2" fill="none"/>
-        <path d="M25 11 C21 14, 21 20, 25 23" stroke="#C8922A" stroke-width="1.2" fill="none"/>
+        <circle cx="17" cy="17" r="13" stroke="var(--color-gold)" stroke-width="1.5"/>
+        <path d="M9 11 C13 14, 13 20, 9 23" stroke="var(--color-gold)" stroke-width="1.2" fill="none"/>
+        <path d="M25 11 C21 14, 21 20, 25 23" stroke="var(--color-gold)" stroke-width="1.2" fill="none"/>
       </svg>
-      <span>Otay Ranch Baseball</span>
+      <span>Academy of Criminology and Justice</span>
     </div>
   </div>
 </header>
@@ -519,18 +521,14 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
 <!-- ===== About Austin ===== -->
 <section id="about" class="section" style="background: var(--color-bg);">
   <div class="container about-grid">
-    <div class="photo-frame">[ Photo of Austin ]</div>
-    <div class="about-text">
+    <div class="photo-frame reveal" style="--i: 0">[ Photo of Austin ]</div>
+    <div class="about-text reveal" style="--i: 1">
       <span class="eyebrow">WHO HE WAS</span>
       <h2>A Ballplayer. A Protector. A Friend.</h2>
-      <!-- CLIENT: Replace with Austin's story -->
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation.</p>
-      <!-- CLIENT: Replace with Austin's story -->
-      <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa.</p>
-      <!-- CLIENT: Replace with Austin's story -->
-      <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.</p>
-      <!-- CLIENT: Replace with a quote from a teammate, family member, or fellow officer about Austin -->
-      <blockquote class="pull-quote">"[PLACEHOLDER — a quote from a teammate, family member, or fellow officer about Austin]"</blockquote>
+      <!-- CLIENT: Replace with Austin's story (2-3 short paragraphs). -->
+      <p>[CLIENT: Austin's story — who he was, his service, and the people he protected.]</p>
+      <!-- CLIENT: Replace with a quote from a teammate, family member, or fellow officer about Austin. -->
+      <blockquote class="pull-quote">[CLIENT: Pull quote about Austin.]</blockquote>
     </div>
   </div>
 </section>
@@ -538,35 +536,35 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
 <!-- ===== Foundation Mission ===== -->
 <section id="mission" class="section" style="background: var(--color-surface);">
   <div class="container">
-    <div class="center">
-      <h2 class="section-heading">Why We Play On</h2>
+    <div class="center reveal">
+      <h2 class="section-heading">Our Mission</h2>
     </div>
     <div class="card-row">
-      <div class="card">
+      <div class="card reveal" style="--i: 0">
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="20" cy="20" r="15" stroke="#C8922A" stroke-width="2"/>
-          <path d="M10 12 C15 16, 15 24, 10 28" stroke="#C8922A" stroke-width="1.5" fill="none"/>
-          <path d="M30 12 C25 16, 25 24, 30 28" stroke="#C8922A" stroke-width="1.5" fill="none"/>
+          <circle cx="20" cy="20" r="15" stroke="var(--color-gold)" stroke-width="2"/>
+          <path d="M10 12 C15 16, 15 24, 10 28" stroke="var(--color-gold)" stroke-width="1.5" fill="none"/>
+          <path d="M30 12 C25 16, 25 24, 30 28" stroke="var(--color-gold)" stroke-width="1.5" fill="none"/>
         </svg>
         <h3>Honor His Legacy</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
+        <p>Establish scholarships in Austin's name that carry his commitment to service forward.</p>
       </div>
-      <div class="card">
+      <div class="card reveal" style="--i: 1">
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20 5 L33 11 V20 C33 28, 27 33, 20 35 C13 33, 7 28, 7 20 V11 Z" stroke="#C8922A" stroke-width="2" fill="none"/>
-          <path d="M15 19 L19 23 L26 15" stroke="#C8922A" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M20 5 L33 11 V20 C33 28, 27 33, 20 35 C13 33, 7 28, 7 20 V11 Z" stroke="var(--color-gold)" stroke-width="2" fill="none"/>
+          <path d="M15 19 L19 23 L26 15" stroke="var(--color-gold)" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
         <h3>Fund the Next Generation</h3>
-        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        <p>Support future public servants in the South Bay and greater San Diego region.</p>
       </div>
-      <div class="card">
+      <div class="card reveal" style="--i: 2">
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20 9 L35 16 L20 23 L5 16 Z" stroke="#C8922A" stroke-width="2" fill="none" stroke-linejoin="round"/>
-          <path d="M12 19 V27 C12 27, 16 31, 20 31 C24 31, 28 27, 28 27 V19" stroke="#C8922A" stroke-width="2" fill="none"/>
-          <line x1="35" y1="16" x2="35" y2="25" stroke="#C8922A" stroke-width="2"/>
+          <path d="M20 9 L35 16 L20 23 L5 16 Z" stroke="var(--color-gold)" stroke-width="2" fill="none" stroke-linejoin="round"/>
+          <path d="M12 19 V27 C12 27, 16 31, 20 31 C24 31, 28 27, 28 27 V19" stroke="var(--color-gold)" stroke-width="2" fill="none"/>
+          <line x1="35" y1="16" x2="35" y2="25" stroke="var(--color-gold)" stroke-width="2"/>
         </svg>
         <h3>Strengthen the Community</h3>
-        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium totam.</p>
+        <p>Recognize community service and civic responsibility among local students.</p>
       </div>
     </div>
   </div>
@@ -575,67 +573,28 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
 <!-- ===== Golf Tournament ===== -->
 <section id="tournament" class="section tournament">
   <div class="container tournament-grid">
-    <div class="tournament-details">
+    <div class="tournament-details reveal" style="--i: 0">
       <span class="eyebrow">ANNUAL FUNDRAISER</span>
-      <h2>Austin Machitar Memorial Golf Tournament</h2>
+      <h2>Austin C. Machitar Golf Tournament</h2>
       <dl class="details-grid">
-        <!-- CLIENT: Insert tournament date -->
-        <dt>Date</dt><dd>TBD — 2025</dd>
-        <!-- CLIENT: Insert golf course name and city -->
-        <dt>Location</dt><dd>[Golf Course Name], Chula Vista, CA</dd>
-        <dt>Format</dt><dd>[PLACEHOLDER — e.g. 4-Person Scramble]</dd>
-        <dt>Entry Fee</dt><dd>[PLACEHOLDER — e.g. $150 per player / $500 per team]</dd>
-        <dt>Includes</dt><dd>[PLACEHOLDER — e.g. 18 holes, cart, lunch, awards dinner]</dd>
-        <dt>Benefiting</dt><dd>South Bay High School Baseball Scholarships</dd>
+        <dt>Date</dt><dd>Monday, October 5, 2026 · 8:00 AM – 3:00 PM</dd>
+        <dt>Location</dt><dd>Riverwalk Golf Club, 1150 Fashion Valley Rd, San Diego, CA 92108</dd>
+        <!-- CLIENT: Confirm tournament format. -->
+        <dt>Format</dt><dd>[CLIENT: tournament format]</dd>
+        <dt>Entry Fee</dt><dd>$1,000 per team (team of 4)</dd>
+        <!-- CLIENT: Confirm what entry includes. -->
+        <dt>Includes</dt><dd>[CLIENT: what entry includes]</dd>
+        <dt>Benefiting</dt><dd>The Austin C. Machitar Scholarship</dd>
       </dl>
-      <!-- CLIENT: Replace with tournament description -->
-      <p class="tournament-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua — a day on the course in Austin's memory, bringing the community together for a great cause.</p>
+      <p class="tournament-desc">A day on the course in Austin's memory, with all proceeds funding the Austin C. Machitar Scholarship for a graduating senior in the Academy of Criminology and Justice at Otay Ranch High School.</p>
     </div>
 
-    <div class="tournament-form">
-      <h2>Sign Up or Get Updates</h2>
-      <p class="form-subhead">Fill out the form below and we will reach out with full details as they are confirmed.</p>
-
-      <!-- CLIENT: This form currently uses a mailto: action for demo purposes.
-           Before launch, replace the action attribute with your form handler.
-           Recommended options: Netlify Forms, Formspree (formspree.io), or a custom backend.
-           Remove enctype="text/plain" when switching to a real handler. -->
-      <form action="mailto:info@austinmachitarfoundation.org" method="POST" enctype="text/plain" class="js-validate">
-        <div class="field">
-          <label for="t-name">Full Name</label>
-          <input type="text" id="t-name" name="full_name" required>
-        </div>
-        <div class="field">
-          <label for="t-email">Email Address</label>
-          <input type="email" id="t-email" name="email" required>
-        </div>
-        <div class="field">
-          <label for="t-phone">Phone Number <span class="note">(optional)</span></label>
-          <input type="tel" id="t-phone" name="phone">
-        </div>
-        <div class="field">
-          <label for="t-interest">I am interested in...</label>
-          <select id="t-interest" name="interest" required>
-            <option value="">Select one</option>
-            <option>Playing as an individual</option>
-            <option>Playing as part of a team</option>
-            <option>Registering a team (team captain)</option>
-            <option>Becoming a sponsor</option>
-            <option>Volunteering</option>
-            <option>Just keep me informed</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="t-team">Team Name <span class="note">(optional — if registering a team)</span></label>
-          <input type="text" id="t-team" name="team_name">
-        </div>
-        <div class="field">
-          <label for="t-comments">Questions or Comments</label>
-          <textarea id="t-comments" name="comments" rows="4"></textarea>
-        </div>
-        <button type="submit" class="btn-submit">Submit</button>
-        <p class="form-error">Please fill out all required fields.</p>
-      </form>
+    <div class="tournament-form reveal" style="--i: 1">
+      <h2>Register Your Team</h2>
+      <p class="tournament-desc">Team of 4 only — $1,000 per team. No individual signups.</p>
+      <!-- CLIENT: Paste the Zeffy URL into the ZEFFY_REGISTRATION_URL marker at the top of <head>, and into the href below. -->
+      <a href="ZEFFY_REGISTRATION_URL" class="btn btn-primary" target="_blank" rel="noopener">Register Your Team ($1,000)</a>
+      <p class="tournament-desc">Don't have a foursome? Email us at <a href="mailto:acmf7989@gmail.com">acmf7989@gmail.com</a> and we'll help you find a group.</p>
     </div>
   </div>
 </section>
@@ -643,33 +602,22 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
 <!-- ===== Scholarship Program ===== -->
 <section id="scholarships" class="section" style="background: var(--color-bg);">
   <div class="container">
-    <div class="center">
+    <div class="center reveal">
       <h2 class="section-heading">Where the Money Goes</h2>
-      <!-- CLIENT: Define scholarship eligibility criteria -->
-      <p class="intro-text">Scholarships are awarded to South Bay high school baseball players who demonstrate strong character, academic commitment, and financial need. Selection criteria reflect the dedication Austin showed on and off the field.</p>
+      <p class="intro-text">The Austin C. Machitar Scholarship is a character-based award — not based on academic achievement — for a graduating senior in the Academy of Criminology and Justice (AOCJ) at Otay Ranch High School who brings positivity, connection, and joy to those around them.</p>
     </div>
-    <div class="card-row-2">
-      <div class="card">
-        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M20 9 L35 16 L20 23 L5 16 Z" stroke="#C8922A" stroke-width="2" fill="none" stroke-linejoin="round"/>
-          <path d="M12 19 V27 C12 27, 16 31, 20 31 C24 31, 28 27, 28 27 V19" stroke="#C8922A" stroke-width="2" fill="none"/>
-          <line x1="35" y1="16" x2="35" y2="25" stroke="#C8922A" stroke-width="2"/>
+    <div class="card-row-2" style="grid-template-columns: minmax(0, 520px); justify-content: center;">
+      <div class="card reveal" style="text-align: center;">
+        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-left: auto; margin-right: auto;">
+          <path d="M20 9 L35 16 L20 23 L5 16 Z" stroke="var(--color-gold)" stroke-width="2" fill="none" stroke-linejoin="round"/>
+          <path d="M12 19 V27 C12 27, 16 31, 20 31 C24 31, 28 27, 28 27 V19" stroke="var(--color-gold)" stroke-width="2" fill="none"/>
+          <line x1="35" y1="16" x2="35" y2="25" stroke="var(--color-gold)" stroke-width="2"/>
         </svg>
-        <h3>Austin Machitar Memorial Scholarship</h3>
-        <!-- CLIENT: Confirm scholarship amount, number of awards, and criteria -->
-        <p>Scholarship amount TBD. One award per year to a deserving student athlete. Eligibility criteria to be finalized.</p>
-        <a href="#contact" class="card-cta">Learn About Eligibility</a>
-      </div>
-      <div class="card">
-        <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="20" cy="20" r="15" stroke="#C8922A" stroke-width="2"/>
-          <path d="M10 12 C15 16, 15 24, 10 28" stroke="#C8922A" stroke-width="1.5" fill="none"/>
-          <path d="M30 12 C25 16, 25 24, 30 28" stroke="#C8922A" stroke-width="1.5" fill="none"/>
-        </svg>
-        <h3>Field Ready Fund</h3>
-        <!-- CLIENT: Confirm equipment grant details -->
-        <p>Equipment grants for players who cannot afford gear, so that cost is never a barrier to getting on the field.</p>
-        <a href="#contact" class="card-cta">Support a Player</a>
+        <h3>The Austin C. Machitar Scholarship</h3>
+        <p>Selection is merit-based and anonymous. Applications will be accepted for the 2026 to 2027 school year.</p>
+        <!-- CLIENT: Confirm the scholarship award amount. -->
+        <p>Award amount: $[CLIENT: amount]</p>
+        <a href="mailto:acmf7989@gmail.com" class="card-cta">Email Us About Eligibility</a>
       </div>
     </div>
   </div>
@@ -678,10 +626,17 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
 <!-- ===== Sponsors ===== -->
 <section id="sponsors" class="section" style="background: var(--color-surface);">
   <div class="container">
-    <div class="center">
+    <div class="center reveal">
       <h2 class="section-heading">Our Sponsors</h2>
       <!-- CLIENT: Update with real sponsor names and logos -->
       <p class="intro-text">We are deeply grateful to the local businesses and community partners who make this mission possible.</p>
+    </div>
+
+    <div class="sponsor-cta reveal">
+      <h3>Become a Sponsor</h3>
+      <p>Sponsorship packages at every level are available — partner with us to support future public servants in the South Bay and greater San Diego region.</p>
+      <p>Sponsors are vetted by the foundation, so please email us to get involved rather than signing up online.</p>
+      <a href="mailto:acmf7989@gmail.com" class="btn-outline-navy">Email Us About Sponsorship</a>
     </div>
 
     <div class="sponsor-tier tier-gold">
@@ -707,10 +662,19 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
       </div>
     </div>
 
-    <div class="sponsor-cta">
-      <h3>Become a Sponsor</h3>
-      <p>Sponsorship packages at every level are available — partner with us to support South Bay student athletes.</p>
-      <a href="#contact" class="btn-outline-navy">Contact Us About Sponsorship</a>
+    <div class="sponsor-tier">
+      <p class="tier-label">Sponsorship Packages</p>
+      <ul class="package-list">
+        <li><span>Hole Sponsor (Sign)</span><span>$250</span></li>
+        <li><span>Hole Sponsor (with Tent)</span><span>$500</span></li>
+        <li><span>Hole Sponsor (with Tent and Alcohol)</span><span>$1,000</span></li>
+        <li><span>Hole Sponsor (Sign) + 4-Some Golf Package</span><span>$1,500</span></li>
+        <li><span>Driving Range Sponsor</span><span>$100</span></li>
+        <li><span>Putting Green Sponsor</span><span>$100</span></li>
+        <li><span>Score Card Sponsor</span><span>$250</span></li>
+        <li><span>Golf Cart Sponsor</span><span>$250</span></li>
+        <li><span>Rules Sheet Sponsor</span><span>$250</span></li>
+      </ul>
     </div>
   </div>
 </section>
@@ -718,48 +682,22 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
 <!-- ===== Contact ===== -->
 <section id="contact" class="section contact">
   <div class="container contact-grid">
-    <div class="contact-info">
-      <h2>Austin Machitar Memorial Foundation</h2>
-      <p>[PLACEHOLDER — Mailing Address]</p>
-      <!-- CLIENT: Confirm email address -->
-      <p>Email: <a href="mailto:info@austinmachitarfoundation.org">info@austinmachitarfoundation.org</a></p>
-      <p>Phone: [PLACEHOLDER — Phone number]</p>
+    <div class="contact-info reveal">
+      <h2>Austin C. Machitar Foundation</h2>
+      <!-- CLIENT: Mailing address -->
+      <p>[CLIENT: Mailing address]</p>
+      <p>Email: <a href="mailto:acmf7989@gmail.com">acmf7989@gmail.com</a></p>
+      <!-- CLIENT: Phone number -->
+      <p>Phone: [CLIENT: Phone number]</p>
       <div class="social-links">
         <a href="#">Instagram</a>
         <a href="#">Facebook</a>
         <a href="#">Twitter/X</a>
       </div>
       <hr class="contact-rule">
-      <!-- CLIENT: Confirm nonprofit status before publishing -->
-      <p class="nonprofit-note">The Austin Machitar Memorial Foundation is a [PLACEHOLDER — 501(c)(3) pending / registered nonprofit]. All donations are [PLACEHOLDER — tax deductible pending IRS determination].</p>
-    </div>
-
-    <div class="contact-form">
-      <h2>Send Us a Message</h2>
-      <!-- CLIENT: This form currently uses a mailto: action for demo purposes.
-           Before launch, replace the action attribute with your form handler.
-           Recommended options: Netlify Forms, Formspree (formspree.io), or a custom backend.
-           Remove enctype="text/plain" when switching to a real handler. -->
-      <form action="mailto:info@austinmachitarfoundation.org" method="POST" enctype="text/plain" class="js-validate">
-        <div class="field">
-          <label for="c-name">Name</label>
-          <input type="text" id="c-name" name="name" required>
-        </div>
-        <div class="field">
-          <label for="c-email">Email</label>
-          <input type="email" id="c-email" name="email" required>
-        </div>
-        <div class="field">
-          <label for="c-subject">Subject <span class="note">(optional)</span></label>
-          <input type="text" id="c-subject" name="subject">
-        </div>
-        <div class="field">
-          <label for="c-message">Message</label>
-          <textarea id="c-message" name="message" rows="5" required></textarea>
-        </div>
-        <button type="submit" class="btn-submit">Submit</button>
-        <p class="form-error">Please fill out all required fields.</p>
-      </form>
+      <p class="nonprofit-note">The Austin C. Machitar Foundation is a California nonprofit public benefit corporation (EIN 43-3341120).</p>
+      <!-- CLIENT: Add the tax-deductible statement once 501(c)(3) determination is confirmed. -->
+      <p class="nonprofit-note">[CLIENT: Tax-deductible statement, pending 501(c)(3) determination]</p>
     </div>
   </div>
 </section>
@@ -767,7 +705,7 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
 <!-- ===== Footer ===== -->
 <footer class="footer">
   <div class="footer-inner">
-    <span class="footer-left">Austin Machitar Memorial Foundation</span>
+    <span class="footer-left">Austin C. Machitar Foundation</span>
     <span class="footer-center">In loving memory of Officer Austin Machitar</span>
     <span class="footer-right" id="footer-copy"></span>
   </div>
@@ -789,27 +727,26 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
     }
   });
 
-  // Inline required-field validation (no JS submission, no alerts)
-  var forms = document.querySelectorAll('form.js-validate');
-  forms.forEach(function (form) {
-    var error = form.querySelector('.form-error');
-    form.addEventListener('submit', function (e) {
-      var missing = false;
-      form.querySelectorAll('[required]').forEach(function (field) {
-        if (!field.value.trim()) { missing = true; }
-      });
-      if (missing) {
-        e.preventDefault();
-        if (error) { error.style.display = 'block'; }
-      } else if (error) {
-        error.style.display = 'none';
-      }
-    });
-  });
-
   // Current year in footer
   document.getElementById('footer-copy').textContent =
-    '© ' + new Date().getFullYear() + ' Austin Machitar Memorial Foundation. All rights reserved.';
+    '© ' + new Date().getFullYear() + ' Austin C. Machitar Foundation. All rights reserved.';
+
+  // Scroll reveal — fires once per element, then stops observing
+  var reveals = document.querySelectorAll('.reveal');
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion || !('IntersectionObserver' in window)) {
+    reveals.forEach(function (el) { el.classList.add('is-visible'); });
+  } else {
+    var observer = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
+    reveals.forEach(function (el) { observer.observe(el); });
+  }
 })();
 </script>
 

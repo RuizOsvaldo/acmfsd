@@ -70,10 +70,10 @@
     function updateArrows() {
       if (!prevBtn || !nextBtn) return;
       var maxScroll = scroller.scrollWidth - scroller.clientWidth;
-      // Hide arrows entirely when there's nothing to scroll
+      // Dim/disable arrows at the edges (and both if nothing to scroll)
       var noScroll = maxScroll <= 1;
-      prevBtn.hidden = noScroll || scroller.scrollLeft <= 0;
-      nextBtn.hidden = noScroll || scroller.scrollLeft >= maxScroll - 1;
+      prevBtn.disabled = noScroll || scroller.scrollLeft <= 0;
+      nextBtn.disabled = noScroll || scroller.scrollLeft >= maxScroll - 1;
     }
 
     if (prevBtn) prevBtn.addEventListener('click', function () {

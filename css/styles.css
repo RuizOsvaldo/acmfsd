@@ -272,32 +272,37 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
 }
 
 /* ---------- Horizontal photo scroller ---------- */
-.scroller-wrap { position: relative; margin-top: 3.5rem; }
+.scroller-wrap {
+  margin-top: 3.5rem;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.75rem;
+}
 .scroller-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 5;
-  width: 3rem;
-  height: 3rem;
+  flex: 0 0 auto;
+  width: 2.75rem;
+  height: 2.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   line-height: 1;
   color: var(--color-navy);
   background: var(--color-gold);
   border: none;
   border-radius: 999px;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
-  transition: background 0.2s ease, transform 0.1s ease;
+  box-shadow: 0 4px 12px rgba(22, 38, 58, 0.18);
+  transition: background 0.2s ease, transform 0.1s ease, opacity 0.2s ease;
 }
 .scroller-arrow:hover { background: var(--color-gold-bright); }
-.scroller-arrow:active { transform: translateY(-50%) scale(0.92); }
-.scroller-prev { left: -0.5rem; }
-.scroller-next { right: -0.5rem; }
-.scroller-arrow[hidden] { display: none; }
+.scroller-arrow:active { transform: scale(0.92); }
+.scroller-arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+  background: var(--color-gold);
+}
 
 .photo-scroller {
   display: flex;
@@ -384,7 +389,7 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
 .about-text h2 { font-weight: 700; font-size: clamp(1.6rem, 3.5vw, 2.4rem); margin-bottom: 1.2rem; }
 .about-text p { margin-bottom: 1rem; color: var(--color-muted); }
 .pull-quote {
-  border-left: 3px solid var(--color-blue);
+  border-left: 3px solid var(--color-gold);
   padding-left: 1.2rem;
   margin-top: 1.5rem;
   font-family: 'Playfair Display', serif;

@@ -27,7 +27,7 @@
       <li><a href="#scholarships">Scholarships</a></li>
       <li><a href="#sponsors">Sponsors</a></li>
       <li><a href="#contact">Contact</a></li>
-      <li><a class="nav-donate" zeffy-form-link="https://www.zeffy.com/embed/ticketing/austin-c-machitar-foundation-golf-tournament?modal=true">Donate</a></li>
+      <li><a class="nav-donate" zeffy-form-link="https://www.zeffy.com/embed/donation-form/scholarship-fund-60?modal=true">Donate</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -43,18 +43,13 @@
     <h1>Austin <span class="accent">Machitar</span></h1>
     <p class="hero-subhead">Honoring the life and service of San Diego Police Officer Austin C. Machitar by supporting Otay Ranch High School students who pursue lives of public service.</p>
     <div class="cta-row">
-      <a class="btn btn-primary" style="cursor:pointer;" zeffy-form-link="https://www.zeffy.com/embed/ticketing/austin-c-machitar-foundation-golf-tournament?modal=true">Donate Now</a>
+      <a class="btn btn-primary" style="cursor:pointer;" zeffy-form-link="https://www.zeffy.com/embed/donation-form/scholarship-fund-60?modal=true">Donate Now</a>
       <a href="#about" class="btn btn-secondary">Learn More</a>
     </div>
     <p class="hero-donate-note">When you donate, Zeffy may prompt you with an optional tip to support its platform. You can set this to <strong>$0</strong> — 100% of your donation reaches the Austin C. Machitar Foundation.</p>
-    <div class="badge">
-      <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="17" cy="17" r="13" stroke="var(--color-gold)" stroke-width="1.5"/>
-        <path d="M9 11 C13 14, 13 20, 9 23" stroke="var(--color-gold)" stroke-width="1.2" fill="none"/>
-        <path d="M25 11 C21 14, 21 20, 25 23" stroke="var(--color-gold)" stroke-width="1.2" fill="none"/>
-      </svg>
+    <a href="#scholarships" class="badge badge-link">
       <span>Academy of Criminology and Justice</span>
-    </div>
+    </a>
   </div>
 </header>
 
@@ -76,12 +71,16 @@
 
   <!-- Horizontal photo scroller -->
   <div class="container reveal">
-    <div class="photo-scroller" tabindex="0" aria-label="Photos of Austin">
-      <figure class="scroll-photo"><img src="assets/baseball.JPEG" alt="Austin playing baseball" loading="lazy"></figure>
-      <figure class="scroll-photo"><img src="assets/baseball2.JPEG" alt="Austin playing baseball" loading="lazy"></figure>
-      <figure class="scroll-photo"><img src="assets/baseball3.JPEG" alt="Austin playing baseball" loading="lazy"></figure>
-      <figure class="scroll-photo"><img src="assets/baseball4.JPEG" alt="Austin playing baseball" loading="lazy"></figure>
-      <figure class="scroll-photo"><img src="assets/police.JPEG" alt="Austin in uniform with a fellow officer" loading="lazy"></figure>
+    <div class="scroller-wrap">
+      <button class="scroller-arrow scroller-prev" type="button" aria-label="Previous photos">&#8249;</button>
+      <div class="photo-scroller" tabindex="0" aria-label="Photos of Austin">
+        <figure class="scroll-photo"><img src="assets/baseball.JPEG" alt="Austin playing baseball" loading="lazy"></figure>
+        <figure class="scroll-photo"><img src="assets/baseball2.JPEG" alt="Austin playing baseball" loading="lazy"></figure>
+        <figure class="scroll-photo"><img src="assets/baseball3.JPEG" alt="Austin playing baseball" loading="lazy"></figure>
+        <figure class="scroll-photo"><img src="assets/baseball4.JPEG" alt="Austin playing baseball" loading="lazy"></figure>
+        <figure class="scroll-photo"><img src="assets/police.JPEG" alt="Austin in uniform with a fellow officer" loading="lazy"></figure>
+      </div>
+      <button class="scroller-arrow scroller-next" type="button" aria-label="Next photos">&#8250;</button>
     </div>
   </div>
 </section>
@@ -144,7 +143,7 @@
           onerror="document.querySelectorAll('[data-zeffy-embed-fallback]').forEach(function(el){el.style.display='block';el.querySelectorAll('iframe[data-zeffy-embed-src]').forEach(function(f){f.src=f.getAttribute('data-zeffy-embed-src');});});">
         </script>
       </div>
-      <p class="tournament-desc">Don't have a foursome? Email us at <a href="mailto:acmf7989@gmail.com">acmf7989@gmail.com</a> and we'll help you find a group.</p>
+      <p class="tournament-desc">Don't have a full team of four? <a href="#contact" data-prefill-subject="Looking to Join a Team — Need Players">Reach out through our contact form</a> and we'll help pair you with other golfers.</p>
       <p class="zeffy-disclaimer">During checkout, Zeffy may suggest an optional contribution to support its own platform. This tip is entirely optional — you can adjust it to <strong>$0</strong> using the drop-down menu, and 100% of your registration goes to the Austin C. Machitar Foundation.</p>
     </div>
   </div>
@@ -157,7 +156,7 @@
       <h2 class="section-heading">Where the Money Goes</h2>
       <p class="intro-text">The Austin C. Machitar Scholarship is a character-based award — not based on academic achievement — for a graduating senior in the Academy of Criminology and Justice (AOCJ) at Otay Ranch High School who brings positivity, connection, and joy to those around them.</p>
     </div>
-    <div class="card-row-2" style="grid-template-columns: minmax(0, 520px); justify-content: center;">
+    <div class="card-row-2" style="grid-template-columns: 1fr;">
       <div class="card reveal" style="text-align: center;">
         <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-left: auto; margin-right: auto;">
           <path d="M20 9 L35 16 L20 23 L5 16 Z" stroke="var(--color-gold)" stroke-width="2" fill="none" stroke-linejoin="round"/>
@@ -168,7 +167,8 @@
         <p>Selection is merit-based and anonymous. Applications will be accepted for the 2026 to 2027 school year.</p>
         <!-- CLIENT: Confirm the scholarship award amount. -->
         <p>Award amount: $[CLIENT: amount]</p>
-        <a href="mailto:acmf7989@gmail.com" class="card-cta">Email Us About Eligibility</a>
+        <a href="#contact" class="card-cta" data-prefill-subject="Scholarship Eligibility Inquiry">Email Us About Eligibility</a>
+        <a href="https://orh.sweetwaterschools.org/programs/academy-of-criminology-and-justice" class="card-cta" target="_blank" rel="noopener" style="display:block; margin-top:0.8rem;">Visit the Otay Ranch HS Academy Page</a>
       </div>
     </div>
   </div>
@@ -285,6 +285,12 @@
     <span class="footer-right" id="footer-copy"></span>
   </div>
 </footer>
+
+<!-- Lightbox overlay for the photo scroller -->
+<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close photo">&times;</button>
+  <img class="lightbox-img" id="lightboxImg" src="" alt="">
+</div>
 
 <script src="js/main.js"></script>
 

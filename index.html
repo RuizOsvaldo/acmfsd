@@ -134,8 +134,6 @@
         <!-- Left: tournament info -->
         <div class="tournament-info">
           <p class="tournament-desc">A day on the course at Riverwalk Golf Club in Austin's memory, with all proceeds funding the Austin C. Machitar Scholarship for a graduating senior in the Academy of Criminology and Justice at Otay Ranch High School.</p>
-          <p class="tournament-desc">Team of 4 only — $1,000 per team.</p>
-          <p class="tournament-desc">Don't have a full team of four? <a href="#contact" data-prefill-subject="Looking to Join a Team — Need Players">Reach out through our contact form</a> and we'll help pair you with other golfers.</p>
         </div>
         <!-- Right: Zeffy ticketing embed -->
         <div class="tournament-register">
@@ -149,21 +147,15 @@
               onerror="document.querySelectorAll('[data-zeffy-embed-fallback]').forEach(function(el){el.style.display='block';el.querySelectorAll('iframe[data-zeffy-embed-src]').forEach(function(f){f.src=f.getAttribute('data-zeffy-embed-src');});});">
             </script>
           </div>
+          <p class="tournament-desc">Team of 4 only — $1,000 per team.</p>
+          <p class="tournament-desc">Don't have a full team of four? <a href="#contact" data-prefill-subject="Looking to Join a Team — Need Players">Reach out through our contact form</a> and we'll help pair you with other golfers.</p>
           <p class="zeffy-disclaimer">During checkout, Zeffy may suggest an optional contribution to support its own platform. This tip is entirely optional — you can adjust it to <strong>$0</strong> using the drop-down menu, and 100% of your registration goes to the Austin C. Machitar Foundation.</p>
         </div>
       </div>
 
-      <!-- Course info + map -->
-      <div class="course-split">
-        <!-- Left: course information -->
-        <div class="course-info">
-          <h3 class="course-name">Riverwalk Golf Club</h3>
-          <p class="course-address">1150 Fashion Valley Rd, San Diego, CA 92108</p>
-          <p class="tournament-desc">Set along the winding San Diego River in the heart of Mission Valley, Riverwalk Golf Club is a 27-hole layout designed by Ted Robinson Sr. and Ted Robinson Jr. Mature trees, water features, and meandering fairways make it one of the city's most scenic and accessible courses — just minutes from Downtown and easy to reach from anywhere in the county.</p>
-          <p class="tournament-desc">Plan to arrive early to check in, warm up on the range, and meet your fellow players before the shotgun start.</p>
-          <a href="https://www.google.com/maps/dir/?api=1&destination=Riverwalk+Golf+Club%2C+1150+Fashion+Valley+Rd%2C+San+Diego%2C+CA+92108" target="_blank" rel="noopener noreferrer" class="course-directions-btn">Get Directions</a>
-        </div>
-        <!-- Right: clickable Google Map -->
+      <!-- Course map + info -->
+      <div class="course-stack">
+        <!-- Clickable Google Map -->
         <a class="course-map" href="https://www.google.com/maps/dir/?api=1&destination=Riverwalk+Golf+Club%2C+1150+Fashion+Valley+Rd%2C+San+Diego%2C+CA+92108" target="_blank" rel="noopener noreferrer" aria-label="Open Riverwalk Golf Club in Google Maps for directions">
           <iframe
             title="Map of Riverwalk Golf Club"
@@ -174,6 +166,13 @@
             referrerpolicy="no-referrer-when-downgrade"></iframe>
           <span class="course-map-hint">Click to open in Google Maps</span>
         </a>
+        <!-- Course information -->
+        <div class="course-info">
+          <h3 class="course-name">Riverwalk Golf Club</h3>
+          <p class="course-address">1150 Fashion Valley Rd, San Diego, CA 92108</p>
+          <p class="tournament-desc">Set along the winding San Diego River in the heart of Mission Valley, Riverwalk Golf Club is a 27-hole layout designed by Ted Robinson Sr. and Ted Robinson Jr. Mature trees, water features, and meandering fairways make it one of the city's most scenic and accessible courses — just minutes from Downtown and easy to reach from anywhere in the county.</p>
+          <p class="tournament-desc">Plan to arrive early to check in, warm up on the range, and meet your fellow players before the shotgun start.</p>
+        </div>
       </div>
     </div>
   </div>

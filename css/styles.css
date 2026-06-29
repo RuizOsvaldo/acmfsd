@@ -462,18 +462,13 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
 .tournament-info .tournament-desc:first-child { margin-top: 0; }
 .tournament-register .zeffy-embed-wrap { margin-top: 0; }
 
-/* Course info + map */
-.course-split {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3.5rem;
-  align-items: stretch;
+/* Course map + info */
+.course-stack {
   margin-top: 3.5rem;
 }
 .course-info {
-  min-height: 450px;
-  display: flex;
-  flex-direction: column;
+  margin-top: 1.5rem;
+  text-align: center;
 }
 .course-name {
   color: var(--color-bg);
@@ -488,22 +483,6 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
   margin: 0 0 1rem;
 }
 .course-info .tournament-desc:first-of-type { margin-top: 0; }
-.course-directions-btn {
-  display: inline-block;
-  margin-top: auto;
-  align-self: flex-start;
-  background: var(--color-gold);
-  color: var(--color-green);
-  font-weight: 600;
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
-  text-decoration: none;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-.course-directions-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
-}
 .course-map {
   position: relative;
   display: block;
@@ -732,9 +711,7 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
   .about-grid,
   .tournament-grid,
   .tournament-split,
-  .course-split,
   .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-  .course-info { min-height: 0; }
   .course-map { height: 300px; }
   .card-row,
   .card-row-2 { grid-template-columns: 1fr; }

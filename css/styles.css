@@ -462,13 +462,11 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
 .tournament-info .tournament-desc:first-child { margin-top: 0; }
 .tournament-register .zeffy-embed-wrap { margin-top: 0; }
 
-/* Course map + info */
-.course-stack {
-  margin-top: 3.5rem;
-}
+/* Course map + info (in the left column, beside the Zeffy form) */
+.tournament-info .course-map { margin-top: 1.5rem; }
 .course-info {
-  margin-top: 1.5rem;
-  text-align: center;
+  margin-top: 1.25rem;
+  text-align: left;
 }
 .course-name {
   color: var(--color-bg);
@@ -486,7 +484,7 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
 .course-map {
   position: relative;
   display: block;
-  height: 450px;
+  height: 280px;
   border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);

@@ -452,6 +452,15 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
 }
 .tournament-single { max-width: 720px; margin: 0 auto; }
 .tournament-head { text-align: center; }
+.tournament-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.5rem;
+  align-items: start;
+  margin-top: 1.5rem;
+}
+.tournament-info .tournament-desc:first-child { margin-top: 0; }
+.tournament-register .zeffy-embed-wrap { margin-top: 0; }
 .tournament h2 { color: var(--color-bg); font-weight: 700; font-size: clamp(1.6rem, 3.2vw, 2.2rem); margin: 0.5rem 0 1.5rem; }
 .tournament .eyebrow { display: block; margin-bottom: 0.4rem; }
 .details-grid { display: grid; grid-template-columns: max-content 1fr; gap: 0.75rem 1.5rem; }
@@ -649,6 +658,7 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
 
   .about-grid,
   .tournament-grid,
+  .tournament-split,
   .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .card-row,
   .card-row-2 { grid-template-columns: 1fr; }

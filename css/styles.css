@@ -456,14 +456,22 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 3.5rem;
-  align-items: start;
+  align-items: stretch;
   margin-top: 1.5rem;
+}
+.tournament-info {
+  display: flex;
+  flex-direction: column;
 }
 .tournament-info .tournament-desc:first-child { margin-top: 0; }
 .tournament-register .zeffy-embed-wrap { margin-top: 0; }
 
 /* Course map + info (in the left column, beside the Zeffy form) */
-.tournament-info .course-map { margin-top: 0.5rem; }
+.tournament-info .course-map {
+  margin-top: 0.5rem;
+  flex: 1 1 auto; /* grow to match the Zeffy column height */
+  min-height: 280px;
+}
 .course-info {
   margin-top: 1.25rem;
   text-align: left;
@@ -484,7 +492,7 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
 .course-map {
   position: relative;
   display: block;
-  height: 280px;
+  height: 280px; /* fallback; the .tournament-info scope lets it grow to match the form */
   border-radius: 6px;
   overflow: hidden;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);

@@ -481,12 +481,14 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
   font-weight: 700;
   font-size: clamp(1.3rem, 2.4vw, 1.7rem);
   margin: 1.5rem 0 0.4rem;
+  text-align: center;
 }
 .course-address {
   font-family: 'Roboto Mono', monospace;
   font-size: 0.85rem;
   color: var(--color-gold);
   margin: 0 0 1rem;
+  text-align: center;
 }
 .course-info .tournament-desc:first-of-type { margin-top: 0; }
 .course-map {

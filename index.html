@@ -271,13 +271,13 @@
     <div class="contact-form reveal" style="--i: 1">
       <h2>Send Us a Message</h2>
       <!--
-        CLIENT/DEV: This form delivers to the foundation via Formspree.
-        1. Create a free form at https://formspree.io (verify acmf7989@gmail.com as the recipient).
-        2. Replace YOUR_FORM_ID below with the ID Formspree gives you (e.g. action="https://formspree.io/f/abcdwxyz").
-        Until that's done, the form will not send.
+        CLIENT/DEV: This form delivers to the foundation via FormSubmit (free, unlimited, no account/key).
+        FIRST SUBMISSION ONLY: FormSubmit emails acmf7989@gmail.com a one-time confirmation link —
+        click it once to activate delivery. After that, all messages arrive automatically.
+        To change the recipient, edit the email in the form's action URL below.
       -->
       <form id="contactForm" class="contact-form-fields"
-            action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            action="https://formsubmit.co/ajax/acmf7989@gmail.com" method="POST">
         <label for="cf-name">Name</label>
         <input id="cf-name" name="name" type="text" autocomplete="name" required>
 
@@ -285,15 +285,17 @@
         <input id="cf-email" name="email" type="email" autocomplete="email" required>
 
         <label for="cf-subject">Subject</label>
-        <input id="cf-subject" name="subject" type="text">
+        <input id="cf-subject" name="subject" type="text" placeholder="New message from the ACMF website">
 
         <label for="cf-message">Message</label>
         <textarea id="cf-message" name="message" rows="5" required></textarea>
 
-        <!-- Routes the reply-to and the email subject line in Formspree -->
+        <!-- FormSubmit settings -->
         <input type="hidden" name="_subject" value="New message from the ACMF website">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
         <!-- Honeypot: bots fill this, humans don't -->
-        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
+        <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
 
         <button type="submit" class="btn btn-primary">Send Message</button>
         <p id="cf-status" class="form-status" role="status" aria-live="polite"></p>

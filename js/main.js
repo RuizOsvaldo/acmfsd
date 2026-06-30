@@ -139,18 +139,17 @@
     });
   });
 
-  // Contact form — submit to Formspree via fetch, no page reload
+  // Contact form — submit to FormSubmit (AJAX endpoint) via fetch, no page reload
   var form = document.getElementById('contactForm');
   if (form) {
     var status = document.getElementById('cf-status');
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
-      // Guard against an unconfigured endpoint
-      if (form.action.indexOf('YOUR_FORM_ID') !== -1) {
-        status.textContent = 'Form not configured yet — please email acmf7989@gmail.com directly.';
-        status.className = 'form-status is-error';
-        return;
+      // Default the subject if the user left it blank
+      var subjectField = form.querySelector('input[name="subject"]');
+      if (subjectField && !subjectField.value.trim()) {
+        subjectField.value = 'New message from the ACMF website';
       }
 
       var btn = form.querySelector('button[type="submit"]');
@@ -165,19 +164,21 @@
         body: new FormData(form),
         headers: { 'Accept': 'application/json' }
       }).then(function (response) {
-        if (response.ok) {
-          form.reset();
-          status.textContent = 'Thank you — your message has been sent. We\'ll be in touch soon.';
-          status.className = 'form-status is-success';
-        } else {
-          return response.json().then(function (data) {
-            var msg = (data && data.errors)
-              ? data.errors.map(function (er) { return er.message; }).join(', ')
+        return response.json().then(function (data) {
+          // FormSubmit's AJAX endpoint returns success as the string "true"
+          var ok = response.ok && data && String(data.success) === 'true';
+          if (ok) {
+            form.reset();
+            status.textContent = 'Thank you — your message has been sent. We\'ll be in touch soon.';
+            status.className = 'form-status is-success';
+          } else {
+            var msg = (data && data.message)
+              ? data.message
               : 'Something went wrong. Please email acmf7989@gmail.com instead.';
             status.textContent = msg;
             status.className = 'form-status is-error';
-          });
-        }
+          }
+        });
       }).catch(function () {
         status.textContent = 'Network error. Please email acmf7989@gmail.com instead.';
         status.className = 'form-status is-error';

@@ -285,7 +285,9 @@
         <input id="cf-name" name="name" type="text" autocomplete="name" required>
 
         <label for="cf-email">Email</label>
-        <input id="cf-email" name="email" type="email" autocomplete="email" required>
+        <input id="cf-email" name="email" type="email" autocomplete="email" required
+               pattern="[^@\s]+@[^@\s]+\.[^@\s]{2,}"
+               title="Enter a valid email address, e.g. name@example.com">
 
         <label for="cf-subject">Subject</label>
         <input id="cf-subject" name="subject" type="text" placeholder="New message from the ACMF website">

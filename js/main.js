@@ -146,6 +146,18 @@
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
+      // Validate the email format: require name@domain.tld with a 2+ char TLD.
+      // Note: this catches malformed addresses (e.g. "foo@bar") but cannot
+      // confirm a mailbox actually exists (e.g. "fake@fake.com" looks valid).
+      var emailField = form.querySelector('input[name="email"]');
+      var emailRe = /^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/;
+      if (emailField && !emailRe.test(emailField.value.trim())) {
+        status.textContent = 'Please enter a valid email address, e.g. name@example.com.';
+        status.className = 'form-status is-error';
+        emailField.focus();
+        return;
+      }
+
       // Default the subject if the user left it blank
       var subjectField = form.querySelector('input[name="subject"]');
       if (subjectField && !subjectField.value.trim()) {

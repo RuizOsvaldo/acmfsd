@@ -128,6 +128,52 @@
     });
   }
 
+  // Flyer slideshow — arrows/dots page through the flyer sheets. Each slide is
+  // a link to its PDF, so clicking (rather than dragging) opens it in a new tab.
+  var flyerSlider = document.querySelector('.flyer-slider');
+  if (flyerSlider) {
+    var slides = Array.prototype.slice.call(flyerSlider.querySelectorAll('.flyer-slide'));
+    var flyerPrev = flyerSlider.querySelector('.flyer-prev');
+    var flyerNext = flyerSlider.querySelector('.flyer-next');
+    var dotsWrap = flyerSlider.querySelector('.flyer-dots');
+    var current = 0;
+
+    // Build one dot per slide
+    var dots = slides.map(function (slide, i) {
+      var dot = document.createElement('button');
+      dot.type = 'button';
+      dot.className = 'flyer-dot' + (i === 0 ? ' is-active' : '');
+      dot.setAttribute('role', 'tab');
+      dot.setAttribute('aria-label', 'Flyer page ' + (i + 1));
+      dot.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+      dot.addEventListener('click', function () { showSlide(i); });
+      if (dotsWrap) dotsWrap.appendChild(dot);
+      return dot;
+    });
+
+    function showSlide(i) {
+      // Wrap around at either end
+      current = (i + slides.length) % slides.length;
+      slides.forEach(function (slide, idx) {
+        slide.classList.toggle('is-active', idx === current);
+      });
+      dots.forEach(function (dot, idx) {
+        var active = idx === current;
+        dot.classList.toggle('is-active', active);
+        dot.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+    }
+
+    if (flyerPrev) flyerPrev.addEventListener('click', function () { showSlide(current - 1); });
+    if (flyerNext) flyerNext.addEventListener('click', function () { showSlide(current + 1); });
+
+    // Left/right arrow keys page through when the slider has focus within
+    flyerSlider.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') { showSlide(current - 1); }
+      else if (e.key === 'ArrowRight') { showSlide(current + 1); }
+    });
+  }
+
   // Links that scroll to the contact form and prefill the subject line
   var subjectField = document.getElementById('cf-subject');
   var messageField = document.getElementById('cf-message');

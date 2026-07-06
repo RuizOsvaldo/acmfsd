@@ -597,13 +597,80 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
 .tier-community { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
 .tier-community .sponsor-box { min-height: 80px; }
 
+/* ===== Flyer slideshow ===== */
+.flyer-slider { margin-top: 1rem; }
+.flyer-scroller-wrap {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.75rem;
+}
+.flyer-stage {
+  position: relative;
+  width: 100%;
+  max-width: 620px;
+  margin: 0 auto;
+}
+.flyer-slide {
+  display: none;
+  text-decoration: none;
+}
+.flyer-slide.is-active {
+  display: block;
+  animation: flyer-fade 0.35s ease;
+}
+@keyframes flyer-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 .packages-flyer {
   display: block;
-  width: 75%;
+  width: 100%;
   height: auto;
-  margin: 1rem auto 0;
+  margin: 0 auto;
   border: 4px solid var(--color-gold);
   box-shadow: 6px 6px 0 var(--color-gold);
+  transition: transform 0.15s ease;
+}
+.flyer-slide:hover .packages-flyer,
+.flyer-slide:focus-visible .packages-flyer { transform: translateY(-3px); }
+.flyer-slide:focus-visible { outline: 3px solid var(--color-gold-bright); outline-offset: 4px; }
+
+.flyer-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+}
+.flyer-dots {
+  display: flex;
+  gap: 0.5rem;
+}
+.flyer-dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: var(--color-border);
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.flyer-dot:hover { background: var(--color-gold-bright); }
+.flyer-dot.is-active { background: var(--color-gold); transform: scale(1.25); }
+.flyer-hint {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--color-muted);
+  text-align: center;
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .flyer-scroller-wrap { gap: 0.4rem; }
+  .scroller-arrow { width: 2.4rem; height: 2.4rem; font-size: 1.4rem; }
 }
 
 .sponsor-cta {

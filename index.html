@@ -240,9 +240,35 @@
 
     <div class="sponsor-tier">
       <p class="tier-label">Sponsorship Packages</p>
-      <a href="assets/GolfSponsorshipFlyer.png" target="_blank" rel="noopener">
-        <img class="packages-flyer" src="assets/GolfSponsorshipFlyer.png" alt="Austin C. Machitar Foundation Golf Tournament sponsorship flyer">
-      </a>
+      <!-- Flyer slideshow: arrows page through each flyer sheet; clicking a
+           sheet opens its PDF in a new tab so visitors can download it. -->
+      <div class="flyer-slider reveal">
+        <div class="flyer-scroller-wrap">
+          <button class="scroller-arrow flyer-prev" type="button" aria-label="Previous flyer page">&#8249;</button>
+
+          <div class="flyer-stage">
+            <a class="flyer-slide is-active" href="assets/flyer/golf-flyer-1.pdf" target="_blank" rel="noopener" title="Open flyer page 1 (PDF) in a new tab to download">
+              <img class="packages-flyer" src="assets/flyer/golf-flyer-1.png" alt="Austin C. Machitar Foundation Golf Fundraiser flyer — event details, Monday Oct. 5 at Riverwalk Golf Club">
+            </a>
+            <a class="flyer-slide" href="assets/flyer/golf-flyer-2.pdf" target="_blank" rel="noopener" title="Open flyer page 2 (PDF) in a new tab to download">
+              <img class="packages-flyer" src="assets/flyer/golf-flyer-2.png" alt="Sponsorship packages — Captain Sponsor $2,500 and Lieutenant Sponsor $2,000" loading="lazy">
+            </a>
+            <a class="flyer-slide" href="assets/flyer/golf-flyer-3.pdf" target="_blank" rel="noopener" title="Open flyer page 3 (PDF) in a new tab to download">
+              <img class="packages-flyer" src="assets/flyer/golf-flyer-3.png" alt="Sponsor a Contest — Sergeant Sponsor $1,000 for Putting, Long Drive, or Closest to the Pin" loading="lazy">
+            </a>
+            <a class="flyer-slide" href="assets/flyer/golf-flyer-4.pdf" target="_blank" rel="noopener" title="Open flyer page 4 (PDF) in a new tab to download">
+              <img class="packages-flyer" src="assets/flyer/golf-flyer-4.png" alt="Sponsorship packages — Officer Sponsor $500 and Recruit Sponsor $250" loading="lazy">
+            </a>
+          </div>
+
+          <button class="scroller-arrow flyer-next" type="button" aria-label="Next flyer page">&#8250;</button>
+        </div>
+
+        <div class="flyer-controls">
+          <div class="flyer-dots" role="tablist" aria-label="Flyer pages"></div>
+          <p class="flyer-hint">Tap a page to open the PDF in a new tab and download it.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>

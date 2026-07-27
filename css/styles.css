@@ -591,11 +591,15 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
   text-align: center;
   padding: 1rem;
 }
-.tier-gold .sponsor-box { border-color: var(--color-gold); min-height: 130px; }
-.tier-silver { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-.tier-silver .sponsor-box { min-height: 100px; }
-.tier-community { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
-.tier-community .sponsor-box { min-height: 80px; }
+.tier-captain .sponsor-box { border-color: var(--color-gold); min-height: 130px; }
+.tier-lieutenant { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.tier-lieutenant .sponsor-box { min-height: 100px; }
+.tier-sergeant { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; }
+.tier-sergeant .sponsor-box { min-height: 90px; }
+.tier-officer { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
+.tier-officer .sponsor-box { min-height: 80px; }
+.tier-recruit { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
+.tier-recruit .sponsor-box { min-height: 70px; }
 
 /* ===== Flyer slideshow ===== */
 .flyer-slider { margin-top: 1rem; }
@@ -790,8 +794,10 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
   .course-map { height: 300px; }
   .card-row,
   .card-row-2 { grid-template-columns: 1fr; }
-  .tier-silver { grid-template-columns: 1fr; }
-  .tier-community { grid-template-columns: repeat(2, 1fr); }
+  .tier-lieutenant { grid-template-columns: 1fr; }
+  .tier-sergeant,
+  .tier-officer,
+  .tier-recruit { grid-template-columns: repeat(2, 1fr); }
   .scroll-photo { width: 240px; height: 190px; }
 
   .footer-inner { flex-direction: column; text-align: center; }

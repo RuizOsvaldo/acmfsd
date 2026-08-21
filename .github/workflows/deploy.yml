@@ -1,0 +1,34 @@
+name: Deploy to Cloudflare Pages
+
+# Direct Upload deploy for the static site at the repo root.
+# Runs independently of any Cloudflare Git integration.
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Never let two deploys race; the newest push wins.
+concurrency:
+  group: cloudflare-pages-blue-field-de17
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Upload static site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      # No build step: index.html, assets/, css/ and js/ are shipped as-is.
+      - name: Deploy with Wrangler
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy . --project-name=blue-field-de17 --branch=main

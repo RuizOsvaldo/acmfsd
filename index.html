@@ -12,7 +12,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;600&family=Roboto+Mono:wght@400&display=swap">
-<link rel="stylesheet" href="css/styles.css">
+<!-- Assets carry a ?v= version. GitHub Pages serves css/js with
+     cache-control: max-age=14400 (4h), so returning visitors would otherwise
+     run a stale main.js — which silently breaks the fundraiser tabs.
+     BUMP ?v= ON BOTH FILES whenever styles.css or main.js changes. -->
+<link rel="stylesheet" href="css/styles.css?v=2">
 </head>
 <body>
 
@@ -366,7 +370,7 @@
   <img class="lightbox-img" id="lightboxImg" src="" alt="">
 </div>
 
-<script src="js/main.js"></script>
+<script src="js/main.js?v=2"></script>
 
 <!-- Zeffy modal form script (powers the Donate button) -->
 <script src="https://zeffy-scripts.s3.ca-central-1.amazonaws.com/embed-form-script.min.js"></script>

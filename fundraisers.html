@@ -12,7 +12,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;600&family=Roboto+Mono:wght@400&display=swap">
-<link rel="stylesheet" href="css/styles.css">
+<!-- Assets carry a ?v= version. GitHub Pages serves css/js with
+     cache-control: max-age=14400 (4h), so returning visitors would otherwise
+     run a stale main.js — which silently breaks the fundraiser tabs.
+     BUMP ?v= ON BOTH FILES whenever styles.css or main.js changes. -->
+<link rel="stylesheet" href="css/styles.css?v=2">
 </head>
 <body>
 
@@ -88,12 +92,14 @@
       <div class="tournament-split">
         <!-- Left: tournament info + course map -->
         <div class="tournament-info">
+          <p class="column-label">About the Event</p>
           <p class="tournament-desc">A day on the course at Riverwalk Golf Club in Austin's memory, with all proceeds funding the Austin C. Machitar Scholarship for a graduating senior in the Academy of Criminology and Justice at Otay Ranch High School.</p>
           <p class="tournament-desc">Registration includes 18 holes with a cart and range access, a lunch buffet and drinks, on-course contests and raffle prizes, and the closing reception.</p>
-          <!-- Course name + address above the map -->
+          <p class="tournament-desc">Set along the winding San Diego River in the heart of Mission Valley, Riverwalk is a 27-hole layout by Ted Robinson Sr. and Jr. — mature trees, water features, and meandering fairways, minutes from Downtown. Plan to arrive early to check in and warm up on the range.</p>
+          <!-- Venue block, then the map last so it absorbs this column's slack
+               and both columns finish at the same height. -->
           <h3 class="course-name">Riverwalk Golf Club</h3>
           <p class="course-address">1150 Fashion Valley Rd, San Diego, CA 92108</p>
-          <!-- Clickable Google Map -->
           <a class="course-map" href="https://www.google.com/maps/dir/?api=1&destination=Riverwalk+Golf+Club%2C+1150+Fashion+Valley+Rd%2C+San+Diego%2C+CA+92108" target="_blank" rel="noopener noreferrer" aria-label="Open Riverwalk Golf Club in Google Maps for directions">
             <iframe
               title="Map of Riverwalk Golf Club"
@@ -104,15 +110,11 @@
               referrerpolicy="no-referrer-when-downgrade"></iframe>
             <span class="course-map-hint">Click to open in Google Maps</span>
           </a>
-          <!-- Course information -->
-          <div class="course-info">
-            <p class="tournament-desc">Set along the winding San Diego River in the heart of Mission Valley, Riverwalk Golf Club is a 27-hole layout designed by Ted Robinson Sr. and Ted Robinson Jr. Mature trees, water features, and meandering fairways make it one of the city's most scenic and accessible courses — just minutes from Downtown and easy to reach from anywhere in the county.</p>
-            <p class="tournament-desc">Plan to arrive early to check in, warm up on the range, and meet your fellow players before the shotgun start.</p>
-          </div>
         </div>
 
         <!-- Right: Zeffy ticketing embed -->
         <div class="tournament-register">
+          <p class="column-label">Register</p>
           <div class="zeffy-embed-wrap">
             <!-- Mounted by js/main.js when this tab is opened -->
             <div data-zeffy-form-url="/embed/ticketing/austin-c-machitar-foundation-golf-tournament"></div>
@@ -151,9 +153,12 @@
       <div class="tournament-split">
         <!-- Left: clinic info + venue map -->
         <div class="tournament-info">
+          <p class="column-label">About the Event</p>
           <p class="tournament-desc">A fun 2-hour guided tennis clinic led by the Redondo Family coaches. Featuring rotational drills, skill development, and engaging on-court activities designed to improve your game. All proceeds from this clinic aim to support the Austin C. Machitar Scholarship for a graduating senior in the Academy of Criminology and Justice at Otay Ranch High School.</p>
           <p class="tournament-desc">Light refreshments, snacks, food, and prizes are included.</p>
-          <!-- Venue name + address above the map -->
+          <p class="tournament-desc">Austin was an accomplished tennis player himself — a talent inherited from his mother Leslie, of the famed Redondo tennis family. This clinic brings that family back to the court in his honor. Plan to arrive a few minutes early to check in and warm up before the first rotation.</p>
+          <!-- Venue block, then the map last so it absorbs this column's slack
+               and both columns finish at the same height. -->
           <h3 class="course-name">Canyon Crest Academy</h3>
           <p class="course-address">5951 Village Center Loop Rd, San Diego, CA 92130</p>
           <!-- Clickable Google Map -->
@@ -167,14 +172,11 @@
               referrerpolicy="no-referrer-when-downgrade"></iframe>
             <span class="course-map-hint">Click to open in Google Maps</span>
           </a>
-          <div class="course-info">
-            <p class="tournament-desc">Austin was an accomplished tennis player himself — a talent inherited from his mother Leslie, of the famed Redondo tennis family. This clinic brings that family back to the court in his honor.</p>
-            <p class="tournament-desc">Plan to arrive a few minutes early to check in and warm up before the first rotation.</p>
-          </div>
         </div>
 
         <!-- Right: Zeffy ticketing embed -->
         <div class="tournament-register">
+          <p class="column-label">Register</p>
           <div class="zeffy-embed-wrap">
             <!-- Mounted by js/main.js when this tab is opened -->
             <div data-zeffy-form-url="/embed/ticketing/redondo-tennis-clinic"></div>
@@ -220,7 +222,7 @@
   </div>
 </footer>
 
-<script src="js/main.js"></script>
+<script src="js/main.js?v=2"></script>
 
 <!-- Zeffy embed script — powers the ticketing forms in the tabs above.
      If it fails to load, the inline fallback iframes are revealed instead. -->

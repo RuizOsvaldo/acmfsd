@@ -903,7 +903,7 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
 .event-flyer img {
   display: block;
   width: 100%;
-  max-width: 460px;
+  max-width: 380px;
   height: auto;
   border: 4px solid var(--color-gold);
   box-shadow: 6px 6px 0 var(--color-gold);
@@ -1047,6 +1047,48 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
   font-weight: 600;
   font-size: 0.9rem;
   color: var(--color-navy);
+}
+
+/* ---------- Fundraiser panel: keep the two columns the same height ----------
+   Left column ends in the map and right column ends in the disclaimer; the map
+   grows and the disclaimer is pushed down, so whichever column is intrinsically
+   shorter absorbs the slack and both bottom edges line up. */
+.fundraisers .tournament-split {
+  align-items: stretch;
+  margin-top: 2rem;
+}
+.fundraisers .tournament-info,
+.fundraisers .tournament-register {
+  display: flex;
+  flex-direction: column;
+  min-width: 0; /* let long words wrap instead of widening the grid track */
+}
+/* The venue block (name, address, map) is pinned to the bottom of the column:
+   margin-top:auto collects the slack above it, and the map keeps a fixed height
+   so the Google embed never has to re-render into a resized iframe (which leaves
+   a dead grey band when it doesn't repaint). */
+.fundraisers .tournament-info .course-name { margin-top: auto; }
+.fundraisers .tournament-info .course-map {
+  flex: 0 0 auto;
+  height: 340px;
+  min-height: 0;
+  margin-top: 0;
+}
+.fundraisers .tournament-register .zeffy-embed-wrap { margin: 0 0 1.25rem; }
+.fundraisers .tournament-register .zeffy-disclaimer { margin-top: auto; }
+/* First paragraph in either column starts flush with the other column's top */
+.fundraisers .tournament-info > .tournament-desc:first-child { margin-top: 0; }
+
+/* Section label above each column, so the pair reads as a matched set */
+.column-label {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  padding-bottom: 0.6rem;
+  margin-bottom: 1.2rem;
+  border-bottom: 1px solid rgba(200, 146, 42, 0.35);
 }
 
 @media (max-width: 640px) {

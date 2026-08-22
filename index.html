@@ -27,7 +27,7 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="#about">About</a></li>
       <li><a href="#mission">Mission</a></li>
-      <li><a href="#tournament">Tournament</a></li>
+      <li><a href="fundraisers.html">Fundraisers</a></li>
       <li><a href="#scholarships">Scholarships</a></li>
       <li><a href="#sponsors">Sponsors</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -129,55 +129,37 @@
   </div>
 </section>
 
-<!-- ===== Golf Tournament ===== -->
-<section id="tournament" class="section tournament">
+<!-- ===== Fundraisers teaser =====
+     Full event details, registration, and maps live on fundraisers.html.
+     Each card deep-links to that page's matching tab. -->
+<section id="fundraisers" class="section fundraisers">
   <div class="container">
-    <div class="tournament-form reveal">
-      <div class="tournament-head">
-        <span class="eyebrow">ANNUAL FUNDRAISER</span>
-        <h2>Austin C. Machitar Golf Tournament</h2>
-      </div>
-      <div class="tournament-split">
-        <!-- Left: tournament info + course map -->
-        <div class="tournament-info">
-          <p class="tournament-desc">A day on the course at Riverwalk Golf Club in Austin's memory, with all proceeds funding the Austin C. Machitar Scholarship for a graduating senior in the Academy of Criminology and Justice at Otay Ranch High School.</p>
-          <!-- Course name + address above the map -->
-          <h3 class="course-name">Riverwalk Golf Club</h3>
-          <p class="course-address">1150 Fashion Valley Rd, San Diego, CA 92108</p>
-          <!-- Clickable Google Map -->
-          <a class="course-map" href="https://www.google.com/maps/dir/?api=1&destination=Riverwalk+Golf+Club%2C+1150+Fashion+Valley+Rd%2C+San+Diego%2C+CA+92108" target="_blank" rel="noopener noreferrer" aria-label="Open Riverwalk Golf Club in Google Maps for directions">
-            <iframe
-              title="Map of Riverwalk Golf Club"
-              src="https://www.google.com/maps?q=Riverwalk+Golf+Club%2C+1150+Fashion+Valley+Rd%2C+San+Diego%2C+CA+92108&output=embed"
-              width="100%"
-              height="280"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"></iframe>
-            <span class="course-map-hint">Click to open in Google Maps</span>
-          </a>
-          <!-- Course information -->
-          <div class="course-info">
-            <p class="tournament-desc">Set along the winding San Diego River in the heart of Mission Valley, Riverwalk Golf Club is a 27-hole layout designed by Ted Robinson Sr. and Ted Robinson Jr. Mature trees, water features, and meandering fairways make it one of the city's most scenic and accessible courses — just minutes from Downtown and easy to reach from anywhere in the county.</p>
-            <p class="tournament-desc">Plan to arrive early to check in, warm up on the range, and meet your fellow players before the shotgun start.</p>
-          </div>
+    <div class="center reveal">
+      <span class="eyebrow">GET INVOLVED</span>
+      <h2>Upcoming Fundraisers</h2>
+      <p class="tournament-desc" style="max-width:720px;margin-left:auto;margin-right:auto;">Every event we host funds the Austin C. Machitar Scholarship for a graduating senior in the Academy of Criminology and Justice at Otay Ranch High School.</p>
+    </div>
+
+    <div class="event-card-row">
+      <a class="event-card reveal" style="--i: 0" href="fundraisers.html#golf">
+        <img class="event-card-thumb" src="assets/flyer/golf-flyer-1-thumb.jpg" alt="Austin C. Machitar Foundation Golf Fundraiser flyer" loading="lazy">
+        <div class="event-card-body">
+          <h3>Austin C. Machitar Golf Tournament</h3>
+          <p class="event-card-when">Mon, October 5 &middot; Riverwalk Golf Club</p>
+          <p>18 holes with a cart and range access, lunch buffet and drinks, on-course contests, raffle prizes, and a closing reception. Teams of four — $1,000 per team.</p>
+          <span class="event-card-cta">See details &amp; register &rarr;</span>
         </div>
-        <!-- Right: Zeffy ticketing embed -->
-        <div class="tournament-register">
-          <div class="zeffy-embed-wrap">
-            <div data-zeffy-embed data-form-url="/embed/ticketing/austin-c-machitar-foundation-golf-tournament"></div>
-            <div data-zeffy-embed-fallback style="display:none;">
-              <div style="position:relative;overflow:hidden;height:450px;width:100%;padding-top:450px;"><iframe title='Donation form powered by Zeffy' style='position: absolute; border: 0; top:0;left:0;bottom:0;right:0;width:100%;height:100%' data-zeffy-embed-src='https://www.zeffy.com/embed/ticketing/austin-c-machitar-foundation-golf-tournament' allowpaymentrequest allowTransparency="true"></iframe></div>
-            </div>
-            <script
-              src="https://www.zeffy.com/embed/v2/zeffy-embed.js"
-              onerror="document.querySelectorAll('[data-zeffy-embed-fallback]').forEach(function(el){el.style.display='block';el.querySelectorAll('iframe[data-zeffy-embed-src]').forEach(function(f){f.src=f.getAttribute('data-zeffy-embed-src');});});">
-            </script>
-          </div>
-          <p class="tournament-desc">Team of 4 only — $1,000 per team.</p>
-          <p class="tournament-desc">Don't have a full team of four? <a href="#contact" data-prefill-subject="Looking to Join a Team — Need Players">Reach out through our contact form</a> and we'll help pair you with other golfers.</p>
-          <p class="zeffy-disclaimer">During checkout, Zeffy may suggest an optional contribution to support its own platform. This tip is entirely optional — you can adjust it to <strong>$0</strong> using the drop-down menu, and 100% of your registration goes to the Austin C. Machitar Foundation.</p>
+      </a>
+
+      <a class="event-card reveal" style="--i: 1" href="fundraisers.html#tennis">
+        <img class="event-card-thumb" src="assets/flyer/tennis-flyer-1-thumb.jpg" alt="Redondo Family Tennis Clinic and Fundraiser flyer" loading="lazy">
+        <div class="event-card-body">
+          <h3>Redondo Family Tennis Clinic</h3>
+          <p class="event-card-when">Sat, October 17 &middot; Canyon Crest Academy</p>
+          <p>A 2-hour guided clinic led by the Redondo Family coaches, with rotational drills, skill development, and on-court activities. Skill level 3.0 to 4.5+ — $100 per player.</p>
+          <span class="event-card-cta">See details &amp; register &rarr;</span>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </section>
@@ -224,7 +206,9 @@
 
     <div class="sponsor-tier tier-captain">
       <p class="tier-label">Captain Sponsor</p>
-      <div class="sponsor-box">[Captain Sponsor Logo]</div>
+      <div class="sponsor-box has-logo">
+        <img class="sponsor-logo" src="assets/sponsors/scotty-bs-burgers.png" alt="Scotty B's Bar, Burgers &amp; BBQ" loading="lazy">
+      </div>
     </div>
 
     <div class="sponsor-tier">
@@ -308,6 +292,16 @@
       <p>Email: <a href="mailto:acmf7989@gmail.com">acmf7989@gmail.com</a></p>
       <!-- CLIENT: Phone number -->
       <p>Phone: [CLIENT: Phone number]</p>
+
+      <div class="check-inline">
+        <p class="tier-label">Donations &amp; Registrations by Check</p>
+        <p>Checks can be made payable to <strong>The Austin C. Machitar Foundation</strong> and mailed to:</p>
+        <address>
+          The Austin C. Machitar Foundation<br>
+          591 Telegraph Canyon Road, Unit 361<br>
+          Chula Vista, CA 91910
+        </address>
+      </div>
       <div class="social-links">
         <a href="#">Instagram</a>
         <a href="#">Facebook</a>

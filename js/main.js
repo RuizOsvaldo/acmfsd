@@ -2,20 +2,25 @@
   // Hamburger toggle
   var hamburger = document.getElementById('hamburger');
   var navLinks = document.getElementById('navLinks');
-  hamburger.addEventListener('click', function () {
-    var open = navLinks.classList.toggle('open');
-    hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
-  });
-  navLinks.addEventListener('click', function (e) {
-    if (e.target.tagName === 'A') {
-      navLinks.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
-    }
-  });
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', function () {
+      var open = navLinks.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    navLinks.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') {
+        navLinks.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
 
   // Current year in footer
-  document.getElementById('footer-copy').textContent =
-    '© ' + new Date().getFullYear() + ' Austin C. Machitar Foundation. All rights reserved.';
+  var footerCopy = document.getElementById('footer-copy');
+  if (footerCopy) {
+    footerCopy.textContent =
+      '© ' + new Date().getFullYear() + ' Austin C. Machitar Foundation. All rights reserved.';
+  }
 
   // Scroll reveal — fires once per element, then stops observing
   var reveals = document.querySelectorAll('.reveal');
@@ -171,6 +176,89 @@
     flyerSlider.addEventListener('keydown', function (e) {
       if (e.key === 'ArrowLeft') { showSlide(current - 1); }
       else if (e.key === 'ArrowRight') { showSlide(current + 1); }
+    });
+  }
+
+  // Fundraiser tabs (fundraisers.html) — one .tab button per .tabpanel, paired
+  // by a matching data-tab slug. Adding a fundraiser is purely a markup change:
+  // add a button + panel with a new slug and this wires itself up.
+  var tablist = document.getElementById('fundraiserTabs');
+  if (tablist) {
+    var tabs = Array.prototype.slice.call(tablist.querySelectorAll('.tab'));
+    var panels = Array.prototype.slice.call(document.querySelectorAll('.tabpanel'));
+
+    // Zeffy forms are mounted the first time their tab is opened, so hidden
+    // forms cost nothing on load. The embed script scans for [data-zeffy-embed]
+    // on its own load and exposes window.Zeffy.embed.init() for anything added
+    // afterwards — calling it again only touches uninitialized embeds.
+    function mountZeffyIn(panel) {
+      var holders = panel.querySelectorAll('[data-zeffy-form-url]:not([data-zeffy-embed])');
+      if (!holders.length) return;
+      holders.forEach(function (holder) {
+        holder.setAttribute('data-form-url', holder.getAttribute('data-zeffy-form-url'));
+        holder.setAttribute('data-zeffy-embed', '');
+      });
+      if (window.Zeffy && window.Zeffy.embed) window.Zeffy.embed.init();
+    }
+
+    function panelFor(slug) {
+      for (var i = 0; i < panels.length; i++) {
+        if (panels[i].getAttribute('data-tab') === slug) return panels[i];
+      }
+      return null;
+    }
+
+    function selectTab(slug, opts) {
+      opts = opts || {};
+      var matched = false;
+      tabs.forEach(function (tab) {
+        var active = tab.getAttribute('data-tab') === slug;
+        if (active) matched = true;
+        tab.setAttribute('aria-selected', active ? 'true' : 'false');
+        tab.tabIndex = active ? 0 : -1;
+        if (active && opts.focus) tab.focus();
+      });
+      if (!matched) return false;
+
+      panels.forEach(function (panel) {
+        var active = panel.getAttribute('data-tab') === slug;
+        panel.hidden = !active;
+        if (active) mountZeffyIn(panel);
+      });
+
+      if (opts.updateHash && window.history && window.history.replaceState) {
+        window.history.replaceState(null, '', '#' + slug);
+      }
+      return true;
+    }
+
+    tabs.forEach(function (tab, i) {
+      tab.addEventListener('click', function () {
+        selectTab(tab.getAttribute('data-tab'), { updateHash: true });
+      });
+      tab.addEventListener('keydown', function (e) {
+        var next = null;
+        if (e.key === 'ArrowRight') next = tabs[(i + 1) % tabs.length];
+        else if (e.key === 'ArrowLeft') next = tabs[(i - 1 + tabs.length) % tabs.length];
+        else if (e.key === 'Home') next = tabs[0];
+        else if (e.key === 'End') next = tabs[tabs.length - 1];
+        if (!next) return;
+        e.preventDefault();
+        selectTab(next.getAttribute('data-tab'), { updateHash: true, focus: true });
+      });
+    });
+
+    // Deep links (fundraisers.html#tennis) open straight to that fundraiser.
+    var initial = window.location.hash.replace('#', '');
+    if (!initial || !panelFor(initial)) {
+      initial = tabs.length ? tabs[0].getAttribute('data-tab') : '';
+    }
+    if (initial) selectTab(initial);
+
+    // Back/forward between deep links, and in-page links to a fundraiser.
+    window.addEventListener('hashchange', function () {
+      var slug = window.location.hash.replace('#', '');
+      if (panelFor(slug)) selectTab(slug);
     });
   }
 

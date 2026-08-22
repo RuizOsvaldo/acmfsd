@@ -85,6 +85,12 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
   transition: color 0.2s ease;
 }
 .nav-links a:hover { color: var(--color-gold); }
+/* Current page marker (interior pages such as fundraisers.html) */
+.nav-links a[aria-current="page"] {
+  color: var(--color-gold);
+  border-bottom: 2px solid var(--color-gold);
+  padding-bottom: 2px;
+}
 
 /* Donate button in nav */
 .nav-links a.nav-donate {
@@ -433,8 +439,9 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
 }
 .card-cta:hover { color: var(--color-navy); }
 
-/* ---------- Tournament ---------- */
-.tournament {
+/* ---------- Tournament / Fundraiser panels ---------- */
+.tournament,
+.fundraisers {
   background-color: var(--color-green);
   background-image: repeating-linear-gradient(
     90deg,
@@ -521,8 +528,10 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
   text-align: center;
   letter-spacing: 0.04em;
 }
-.tournament h2 { color: var(--color-bg); font-weight: 700; font-size: clamp(1.6rem, 3.2vw, 2.2rem); margin: 0.5rem 0 1.5rem; }
-.tournament .eyebrow { display: block; margin-bottom: 0.4rem; }
+.tournament h2,
+.fundraisers h2 { color: var(--color-bg); font-weight: 700; font-size: clamp(1.6rem, 3.2vw, 2.2rem); margin: 0.5rem 0 1.5rem; }
+.tournament .eyebrow,
+.fundraisers .eyebrow { display: block; margin-bottom: 0.4rem; }
 .details-grid { display: grid; grid-template-columns: max-content 1fr; gap: 0.75rem 1.5rem; }
 .details-grid dt {
   font-family: 'Roboto Mono', monospace;
@@ -805,3 +814,242 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
 }
 </content>
 </invoke>
+
+/* ===========================================================
+   Fundraisers page
+   =========================================================== */
+
+/* Belt-and-braces: keep [hidden] hidden even when a display rule
+   would otherwise win (tab panels use grid/flex layouts). */
+[hidden] { display: none !important; }
+
+/* ---------- Interior page header (shorter than the home hero) ---------- */
+.page-header {
+  padding: 4.5rem 1.5rem 3.5rem;
+  text-align: center;
+  background-color: var(--color-navy);
+  background-image: radial-gradient(circle at 15% 85%, rgba(200, 146, 42, 0.32) 0%, rgba(200, 146, 42, 0.10) 35%, rgba(28, 43, 58, 0) 70%);
+  border-bottom: 2px solid var(--color-gold);
+}
+.page-header .eyebrow { display: block; margin-bottom: 0.8rem; }
+.page-header h1 {
+  font-weight: 900;
+  font-size: clamp(2rem, 6vw, 3.6rem);
+  color: var(--color-bg);
+  margin-bottom: 1rem;
+}
+.page-header h1 .accent { color: var(--color-gold); }
+.page-header p {
+  max-width: 680px;
+  margin: 0 auto;
+  color: rgba(250, 246, 239, 0.8);
+  font-size: clamp(1rem, 2vw, 1.15rem);
+}
+
+/* ---------- Tabs ----------
+   One <button role="tab"> per fundraiser, one <section role="tabpanel">
+   per fundraiser. To add a fundraiser, add a matching pair — the script
+   in js/main.js wires up whatever it finds. */
+.tablist {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 3rem;
+}
+.tab {
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  padding: 0.7rem 1.6rem;
+  color: rgba(250, 246, 239, 0.8);
+  background: transparent;
+  border: 2px solid rgba(200, 146, 42, 0.5);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.2s var(--ease-out-quart), color 0.2s var(--ease-out-quart), border-color 0.2s var(--ease-out-quart);
+}
+.tab:hover { border-color: var(--color-gold); color: var(--color-bg); }
+.tab[aria-selected="true"] {
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+  color: var(--color-navy);
+}
+.tab:focus-visible { outline: 2px solid var(--color-gold-bright); outline-offset: 3px; }
+
+/* ---------- Event meta chips (date · time · place) ---------- */
+.event-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin: 1rem 0 0.5rem;
+}
+.event-meta li {
+  list-style: none;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.76rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  border: 1px solid rgba(200, 146, 42, 0.5);
+  border-radius: 999px;
+  padding: 0.35rem 1rem;
+}
+
+/* ---------- Event flyer (one sheet, links to the PDF) ---------- */
+.event-flyer { margin-top: 3.5rem; text-align: center; }
+.event-flyer-link { display: inline-block; text-decoration: none; }
+.event-flyer img {
+  display: block;
+  width: 100%;
+  max-width: 460px;
+  height: auto;
+  border: 4px solid var(--color-gold);
+  box-shadow: 6px 6px 0 var(--color-gold);
+  transition: transform 0.15s ease;
+}
+.event-flyer-link:hover img,
+.event-flyer-link:focus-visible img { transform: translateY(-3px); }
+.event-flyer-link:focus-visible { outline: 3px solid var(--color-gold-bright); outline-offset: 4px; }
+.event-flyer .flyer-hint { color: rgba(250, 246, 239, 0.7); margin-top: 0.9rem; }
+
+/* ---------- Pay-by-check panel ---------- */
+.check-note {
+  margin-top: 3.5rem;
+  border: 2px solid var(--color-gold);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 2rem 1.8rem;
+  text-align: center;
+}
+.check-note h3 {
+  color: var(--color-bg);
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
+}
+.check-note p { color: rgba(250, 246, 239, 0.85); margin-bottom: 0.6rem; }
+.check-note .payee {
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 600;
+  color: var(--color-gold);
+}
+.check-note address {
+  font-family: 'Roboto Mono', monospace;
+  font-style: normal;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: var(--color-bg);
+  margin-top: 0.4rem;
+}
+/* Light-background variant, for the contact section on the home page */
+.check-note.on-light {
+  background: var(--color-bg);
+  border-color: var(--color-gold);
+}
+.check-note.on-light h3 { color: var(--color-navy); }
+.check-note.on-light p { color: var(--color-muted); }
+.check-note.on-light address { color: var(--color-navy); }
+
+/* Compact pay-by-check block inside the dark contact column */
+.check-inline { margin-bottom: 1.5rem; }
+.check-inline .tier-label { text-align: left; margin-bottom: 0.5rem; }
+.check-inline address {
+  font-family: 'Roboto Mono', monospace;
+  font-style: normal;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: rgba(250, 246, 239, 0.85);
+}
+
+/* ---------- Fundraiser teaser cards (home page) ---------- */
+.event-card-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+.event-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(200, 146, 42, 0.45);
+  border-top: 4px solid var(--color-gold);
+  transition: transform 0.25s var(--ease-out-quart), box-shadow 0.25s var(--ease-out-quart), background 0.25s var(--ease-out-quart);
+}
+.event-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+}
+.event-card:focus-visible { outline: 3px solid var(--color-gold-bright); outline-offset: 4px; }
+.event-card-thumb {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: top center;
+  border-bottom: 1px solid rgba(200, 146, 42, 0.45);
+}
+.event-card-body { padding: 1.6rem; display: flex; flex-direction: column; flex: 1; }
+.event-card h3 {
+  color: var(--color-bg);
+  font-weight: 700;
+  font-size: 1.35rem;
+  margin-bottom: 0.5rem;
+}
+.event-card-when {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  margin-bottom: 0.8rem;
+}
+.event-card p { color: rgba(250, 246, 239, 0.85); }
+.event-card-cta {
+  margin-top: auto;
+  padding-top: 1.2rem;
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 600;
+  color: var(--color-gold);
+}
+.event-card:hover .event-card-cta { color: var(--color-gold-bright); }
+
+/* ---------- Real sponsor logos ---------- */
+.sponsor-box.has-logo {
+  background: var(--color-surface);
+  border-style: solid;
+  border-color: var(--color-gold);
+  border-width: 3px;
+  box-shadow: 6px 6px 0 var(--color-gold);
+  padding: 1.75rem;
+}
+/* Top tier gets a contained, featured frame rather than a full-width band */
+.tier-captain .sponsor-box.has-logo {
+  max-width: 420px;
+  margin: 0 auto;
+  min-height: 0;
+}
+.sponsor-logo {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+  max-height: 240px;
+  object-fit: contain;
+}
+.sponsor-name {
+  display: block;
+  margin-top: 0.6rem;
+  font-family: 'Source Sans 3', sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-navy);
+}
+
+@media (max-width: 640px) {
+  .event-card-row { grid-template-columns: 1fr; }
+  .tab { padding: 0.6rem 1.2rem; font-size: 0.88rem; }
+}

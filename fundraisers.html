@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fundraisers — Austin C. Machitar Foundation</title>
+<meta name="description" content="Upcoming Austin C. Machitar Foundation fundraisers — the annual golf tournament and the Redondo Family tennis clinic. All proceeds fund the Austin C. Machitar Scholarship.">
+<!-- Favicon: foundation seal, scaled from assets/logo.png -->
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Sans+3:wght@400;600&family=Roboto+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ===== Navigation ===== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo" style="text-decoration:none;">
+      <img class="nav-logo-img" src="assets/logo.png" alt="Austin C. Machitar Foundation">
+      <span class="divider"></span>
+      <span class="full-name">Austin C. Machitar Foundation</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#mission">Mission</a></li>
+      <li><a href="fundraisers.html" aria-current="page">Fundraisers</a></li>
+      <li><a href="index.html#scholarships">Scholarships</a></li>
+      <li><a href="index.html#sponsors">Sponsors</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+      <li><a class="nav-donate" zeffy-form-link="https://www.zeffy.com/embed/donation-form/scholarship-fund-60?modal=true">Donate</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ===== Page header ===== -->
+<header class="page-header">
+  <div class="hero-content fade-in" style="margin:0 auto;">
+    <span class="eyebrow">SUPPORT THE SCHOLARSHIP</span>
+    <h1>Our <span class="accent">Fundraisers</span></h1>
+    <p>Every event we host funds the Austin C. Machitar Scholarship for a graduating senior in the Academy of Criminology and Justice at Otay Ranch High School. Pick an event below to see the details and register.</p>
+  </div>
+</header>
+
+<!--
+  ===== Fundraisers (tabbed) =====
+
+  HOW TO ADD A NEW FUNDRAISER
+  1. Add a <button class="tab" role="tab"> to the .tablist below. Give it
+     data-tab="<slug>" — the slug becomes the page's deep link, e.g.
+     fundraisers.html#<slug>.
+  2. Add a matching <section class="tabpanel" role="tabpanel" data-tab="<slug>">.
+     Copy an existing panel and swap the copy, map, flyer, and Zeffy form URL.
+  3. For the Zeffy form, set data-zeffy-form-url="/embed/ticketing/<form-slug>".
+     The script in js/main.js mounts it the first time its tab is opened, so
+     hidden forms cost nothing on page load.
+  Nothing else needs editing — the tab script wires up whatever it finds.
+-->
+<section class="section fundraisers" id="fundraisers">
+  <div class="container">
+
+    <div class="tablist" role="tablist" aria-label="Fundraising events" id="fundraiserTabs">
+      <button class="tab" role="tab" type="button" data-tab="golf"
+              id="tab-golf" aria-controls="panel-golf" aria-selected="true">Golf Tournament</button>
+      <button class="tab" role="tab" type="button" data-tab="tennis"
+              id="tab-tennis" aria-controls="panel-tennis" aria-selected="false">Tennis Clinic</button>
+    </div>
+
+    <!-- ---------- Golf Tournament ---------- -->
+    <section class="tabpanel" role="tabpanel" data-tab="golf"
+             id="panel-golf" aria-labelledby="tab-golf" tabindex="-1">
+      <div class="tournament-head">
+        <span class="eyebrow">ANNUAL FUNDRAISER</span>
+        <h2>Austin C. Machitar Golf Tournament</h2>
+        <ul class="event-meta">
+          <li>Monday, October 5</li>
+          <li>7:00 AM – 3:00 PM</li>
+          <li>Riverwalk Golf Club</li>
+        </ul>
+      </div>
+
+      <div class="tournament-split">
+        <!-- Left: tournament info + course map -->
+        <div class="tournament-info">
+          <p class="tournament-desc">A day on the course at Riverwalk Golf Club in Austin's memory, with all proceeds funding the Austin C. Machitar Scholarship for a graduating senior in the Academy of Criminology and Justice at Otay Ranch High School.</p>
+          <p class="tournament-desc">Registration includes 18 holes with a cart and range access, a lunch buffet and drinks, on-course contests and raffle prizes, and the closing reception.</p>
+          <!-- Course name + address above the map -->
+          <h3 class="course-name">Riverwalk Golf Club</h3>
+          <p class="course-address">1150 Fashion Valley Rd, San Diego, CA 92108</p>
+          <!-- Clickable Google Map -->
+          <a class="course-map" href="https://www.google.com/maps/dir/?api=1&destination=Riverwalk+Golf+Club%2C+1150+Fashion+Valley+Rd%2C+San+Diego%2C+CA+92108" target="_blank" rel="noopener noreferrer" aria-label="Open Riverwalk Golf Club in Google Maps for directions">
+            <iframe
+              title="Map of Riverwalk Golf Club"
+              src="https://www.google.com/maps?q=Riverwalk+Golf+Club%2C+1150+Fashion+Valley+Rd%2C+San+Diego%2C+CA+92108&output=embed"
+              width="100%"
+              height="280"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <span class="course-map-hint">Click to open in Google Maps</span>
+          </a>
+          <!-- Course information -->
+          <div class="course-info">
+            <p class="tournament-desc">Set along the winding San Diego River in the heart of Mission Valley, Riverwalk Golf Club is a 27-hole layout designed by Ted Robinson Sr. and Ted Robinson Jr. Mature trees, water features, and meandering fairways make it one of the city's most scenic and accessible courses — just minutes from Downtown and easy to reach from anywhere in the county.</p>
+            <p class="tournament-desc">Plan to arrive early to check in, warm up on the range, and meet your fellow players before the shotgun start.</p>
+          </div>
+        </div>
+
+        <!-- Right: Zeffy ticketing embed -->
+        <div class="tournament-register">
+          <div class="zeffy-embed-wrap">
+            <!-- Mounted by js/main.js when this tab is opened -->
+            <div data-zeffy-form-url="/embed/ticketing/austin-c-machitar-foundation-golf-tournament"></div>
+            <div data-zeffy-embed-fallback style="display:none;">
+              <div style="position:relative;overflow:hidden;height:450px;width:100%;padding-top:450px;"><iframe title='Donation form powered by Zeffy' style='position: absolute; border: 0; top:0;left:0;bottom:0;right:0;width:100%;height:100%' data-zeffy-embed-src='https://www.zeffy.com/embed/ticketing/austin-c-machitar-foundation-golf-tournament' allowpaymentrequest allowTransparency="true"></iframe></div>
+            </div>
+          </div>
+          <p class="tournament-desc">Team of 4 only — $1,000 per team.</p>
+          <p class="tournament-desc">Don't have a full team of four? <a href="index.html#contact">Reach out through our contact form</a> and we'll help pair you with other golfers.</p>
+          <p class="zeffy-disclaimer">During checkout, Zeffy may suggest an optional contribution to support its own platform. This tip is entirely optional — you can adjust it to <strong>$0</strong> using the drop-down menu, and 100% of your registration goes to the Austin C. Machitar Foundation.</p>
+        </div>
+      </div>
+
+      <div class="event-flyer">
+        <a class="event-flyer-link" href="assets/flyer/golf-flyer-1.pdf" target="_blank" rel="noopener" title="Open the golf fundraiser flyer (PDF) in a new tab">
+          <img src="assets/flyer/golf-flyer-1.png" alt="Austin C. Machitar Foundation Golf Fundraiser flyer — Monday Oct. 5, 7:00 AM to 3:00 PM at Riverwalk Golf Club, foursome $1,000" loading="lazy">
+        </a>
+        <p class="flyer-hint">Tap the flyer to open the PDF and share it.</p>
+      </div>
+    </section>
+
+    <!-- ---------- Redondo Family Tennis Clinic ---------- -->
+    <section class="tabpanel" role="tabpanel" data-tab="tennis"
+             id="panel-tennis" aria-labelledby="tab-tennis" tabindex="-1" hidden>
+      <div class="tournament-head">
+        <span class="eyebrow">FUNDRAISER</span>
+        <h2>Redondo Family Tennis Clinic</h2>
+        <ul class="event-meta">
+          <li>Saturday, October 17</li>
+          <li>10:00 AM – 12:00 PM</li>
+          <li>Canyon Crest Academy</li>
+          <li>Skill level 3.0 – 4.5+</li>
+        </ul>
+      </div>
+
+      <div class="tournament-split">
+        <!-- Left: clinic info + venue map -->
+        <div class="tournament-info">
+          <p class="tournament-desc">A fun 2-hour guided tennis clinic led by the Redondo Family coaches. Featuring rotational drills, skill development, and engaging on-court activities designed to improve your game. All proceeds from this clinic aim to support the Austin C. Machitar Scholarship for a graduating senior in the Academy of Criminology and Justice at Otay Ranch High School.</p>
+          <p class="tournament-desc">Light refreshments, snacks, food, and prizes are included.</p>
+          <!-- Venue name + address above the map -->
+          <h3 class="course-name">Canyon Crest Academy</h3>
+          <p class="course-address">5951 Village Center Loop Rd, San Diego, CA 92130</p>
+          <!-- Clickable Google Map -->
+          <a class="course-map" href="https://www.google.com/maps/dir/?api=1&destination=Canyon+Crest+Academy%2C+5951+Village+Center+Loop+Rd%2C+San+Diego%2C+CA+92130" target="_blank" rel="noopener noreferrer" aria-label="Open Canyon Crest Academy in Google Maps for directions">
+            <iframe
+              title="Map of Canyon Crest Academy"
+              src="https://www.google.com/maps?q=Canyon+Crest+Academy%2C+5951+Village+Center+Loop+Rd%2C+San+Diego%2C+CA+92130&output=embed"
+              width="100%"
+              height="280"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <span class="course-map-hint">Click to open in Google Maps</span>
+          </a>
+          <div class="course-info">
+            <p class="tournament-desc">Austin was an accomplished tennis player himself — a talent inherited from his mother Leslie, of the famed Redondo tennis family. This clinic brings that family back to the court in his honor.</p>
+            <p class="tournament-desc">Plan to arrive a few minutes early to check in and warm up before the first rotation.</p>
+          </div>
+        </div>
+
+        <!-- Right: Zeffy ticketing embed -->
+        <div class="tournament-register">
+          <div class="zeffy-embed-wrap">
+            <!-- Mounted by js/main.js when this tab is opened -->
+            <div data-zeffy-form-url="/embed/ticketing/redondo-tennis-clinic"></div>
+            <div data-zeffy-embed-fallback style="display:none;">
+              <div style="position:relative;overflow:hidden;height:450px;width:100%;padding-top:450px;"><iframe title='Donation form powered by Zeffy' style='position: absolute; border: 0; top:0;left:0;bottom:0;right:0;width:100%;height:100%' data-zeffy-embed-src='https://www.zeffy.com/embed/ticketing/redondo-tennis-clinic' allowpaymentrequest allowTransparency="true"></iframe></div>
+            </div>
+          </div>
+          <p class="tournament-desc">Registration fee — $100 per player.</p>
+          <p class="tournament-desc">Questions about the clinic? <a href="index.html#contact">Reach out through our contact form</a> and we'll get back to you.</p>
+          <p class="zeffy-disclaimer">During checkout, Zeffy may suggest an optional contribution to support its own platform. This tip is entirely optional — you can adjust it to <strong>$0</strong> using the drop-down menu, and 100% of your registration goes to the Austin C. Machitar Foundation.</p>
+        </div>
+      </div>
+
+      <div class="event-flyer">
+        <a class="event-flyer-link" href="assets/flyer/tennis-flyer-1.pdf" target="_blank" rel="noopener" title="Open the tennis clinic flyer (PDF) in a new tab">
+          <img src="assets/flyer/tennis-flyer-1.png" alt="Redondo Family Tennis Clinic and Fundraiser flyer — Saturday, October 17, 10:00 AM to 12:00 PM at Canyon Crest Academy, registration fee $100" loading="lazy">
+        </a>
+        <p class="flyer-hint">Tap the flyer to open the PDF and share it.</p>
+      </div>
+    </section>
+
+    <!-- ---------- Pay by check (applies to every fundraiser) ---------- -->
+    <div class="check-note reveal">
+      <h3>Prefer to Pay by Check?</h3>
+      <p>Checks can be made payable to <span class="payee">The Austin C. Machitar Foundation</span> and mailed to:</p>
+      <address>
+        The Austin C. Machitar Foundation<br>
+        591 Telegraph Canyon Road, Unit 361<br>
+        Chula Vista, CA 91910
+      </address>
+      <p style="margin-top:1rem;">Please note the event you're registering for in the memo line, or <a href="index.html#contact" style="color:var(--color-gold);">let us know you're sending one</a> so we can reserve your spot.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <span class="footer-left">Austin C. Machitar Foundation</span>
+    <span class="footer-center">In loving memory of Officer Austin C. Machitar</span>
+    <span class="footer-right" id="footer-copy"></span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+
+<!-- Zeffy embed script — powers the ticketing forms in the tabs above.
+     If it fails to load, the inline fallback iframes are revealed instead. -->
+<script
+  src="https://www.zeffy.com/embed/v2/zeffy-embed.js"
+  onerror="document.querySelectorAll('[data-zeffy-embed-fallback]').forEach(function(el){el.style.display='block';el.querySelectorAll('iframe[data-zeffy-embed-src]').forEach(function(f){f.src=f.getAttribute('data-zeffy-embed-src');});});">
+</script>
+
+<!-- Zeffy modal form script (powers the Donate button) -->
+<script src="https://zeffy-scripts.s3.ca-central-1.amazonaws.com/embed-form-script.min.js"></script>
+
+</body>
+</html>

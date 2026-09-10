@@ -1,0 +1,5 @@
+.DS_Store
+
+# Raw sponsor artwork as delivered by the client (multi-MB originals). The
+# web-ready versions live in assets/sponsors/ — these stay local.
+assets/sponsors/Logos for Golf Tournament Oct. 5/

@@ -3,3 +3,5 @@
 # Raw sponsor artwork as delivered by the client (multi-MB originals). The
 # web-ready versions live in assets/sponsors/ — these stay local.
 assets/sponsors/Logos for Golf Tournament Oct. 5/
+# Later batches land in assets/updates <date>/ — same rule, same reason.
+assets/updates*/

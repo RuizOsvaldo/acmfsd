@@ -611,6 +611,7 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
   gap: 1.5rem;
 }
 .sponsor-grid > * { min-width: 0; }
+.tier-mess-hall  .sponsor-grid > * { flex: 1 1 260px; max-width: 340px; }
 .tier-captain    .sponsor-grid > * { flex: 1 1 230px; max-width: 300px; }
 .tier-lieutenant .sponsor-grid > * { flex: 1 1 215px; max-width: 280px; }
 .tier-sergeant   .sponsor-grid > * { flex: 1 1 195px; max-width: 255px; }
@@ -621,6 +622,7 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
 .tier-officer  .sponsor-grid,
 .tier-recruit  .sponsor-grid { gap: 1.2rem; }
 
+.tier-mess-hall  .sponsor-box { min-height: 200px; }
 .tier-captain    .sponsor-box { min-height: 170px; }
 .tier-lieutenant .sponsor-box { min-height: 150px; }
 .tier-sergeant   .sponsor-box { min-height: 140px; }
@@ -859,8 +861,6 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
   .footer-inner { flex-direction: column; text-align: center; }
   .footer-right, .footer-center { text-align: center; }
 }
-</content>
-</invoke>
 
 /* ===========================================================
    Fundraisers page
@@ -1075,6 +1075,7 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
 }
 /* Frame weight tracks the tier, so the hierarchy is legible before you read
    the labels. */
+.tier-mess-hall  .sponsor-box.has-logo { border-width: 4px; box-shadow: 7px 7px 0 var(--color-gold); padding: 1.8rem; }
 .tier-captain    .sponsor-box.has-logo { border-width: 3px; box-shadow: 6px 6px 0 var(--color-gold); padding: 1.6rem; }
 .tier-lieutenant .sponsor-box.has-logo { border-width: 3px; box-shadow: 5px 5px 0 var(--color-gold); padding: 1.4rem; }
 .tier-sergeant   .sponsor-box.has-logo { border-width: 2px; box-shadow: 4px 4px 0 var(--color-gold); padding: 1.3rem; }
@@ -1092,6 +1093,7 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
   height: auto;
   object-fit: contain;
 }
+.tier-mess-hall  .sponsor-logo { max-height: 175px; }
 .tier-captain    .sponsor-logo { max-height: 150px; }
 .tier-lieutenant .sponsor-logo { max-height: 125px; }
 .tier-sergeant   .sponsor-logo { max-height: 115px; }

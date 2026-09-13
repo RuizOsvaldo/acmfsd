@@ -16,7 +16,7 @@
      cache-control: max-age=14400 (4h), so returning visitors would otherwise
      run a stale main.js — which silently breaks the fundraiser tabs.
      BUMP ?v= ON BOTH FILES whenever styles.css or main.js changes. -->
-<link rel="stylesheet" href="css/styles.css?v=3">
+<link rel="stylesheet" href="css/styles.css?v=4">
 </head>
 <body>
 
@@ -210,6 +210,19 @@
 
     <!-- Sponsor tiers. Each tier lists its confirmed logos, then a dashed
          "spot available" box linking to the sponsorship inbox. -->
+    <div class="sponsor-tier tier-mess-hall reveal">
+      <p class="tier-label">Battalion Mess Hall Sponsors</p>
+      <div class="sponsor-grid">
+        <div class="sponsor-box has-logo">
+          <img class="sponsor-logo" src="assets/sponsors/valentines-tacos.png" alt="Valentine's Tacos &amp; Catering" loading="lazy">
+        </div>
+        <a class="sponsor-box sponsor-open" href="mailto:acmf7989@gmail.com?subject=Battalion%20Mess%20Hall%20Sponsorship">
+          <span class="sponsor-open-lead">Spot available</span>
+          <span class="sponsor-open-sub">Become a Battalion Mess Hall Sponsor</span>
+        </a>
+      </div>
+    </div>
+
     <div class="sponsor-tier tier-captain reveal">
       <p class="tier-label">Captain Sponsors</p>
       <div class="sponsor-grid">
@@ -235,6 +248,9 @@
     <div class="sponsor-tier tier-lieutenant reveal">
       <p class="tier-label">Lieutenant Sponsors</p>
       <div class="sponsor-grid">
+        <div class="sponsor-box has-logo">
+          <img class="sponsor-logo" src="assets/sponsors/dsa-san-diego.jpg" alt="Deputy Sheriffs' Association of San Diego County" loading="lazy">
+        </div>
         <a class="sponsor-box sponsor-open" href="mailto:acmf7989@gmail.com?subject=Lieutenant%20Sponsorship">
           <span class="sponsor-open-lead">Spot available</span>
           <span class="sponsor-open-sub">Become a Lieutenant Sponsor</span>
@@ -261,6 +277,9 @@
         <div class="sponsor-box has-logo">
           <img class="sponsor-logo" src="assets/sponsors/bad-birdie.png" alt="Bad Birdie" loading="lazy">
         </div>
+        <div class="sponsor-box has-logo">
+          <img class="sponsor-logo" src="assets/sponsors/becerril-ac-guys.png" alt="Becerril Air Conditioning Guys" loading="lazy">
+        </div>
         <a class="sponsor-box sponsor-open" href="mailto:acmf7989@gmail.com?subject=Officer%20Sponsorship">
           <span class="sponsor-open-lead">Spot available</span>
           <span class="sponsor-open-sub">Become an Officer Sponsor</span>
@@ -274,6 +293,12 @@
         <div class="sponsor-box has-logo">
           <img class="sponsor-logo" src="assets/sponsors/lululemon-otay-ranch.jpg" alt="lululemon — Otay Ranch Town Center" loading="lazy">
         </div>
+        <div class="sponsor-box has-logo">
+          <img class="sponsor-logo" src="assets/sponsors/am-team-sales.png" alt="A&amp;M Team Sales, Inc." loading="lazy">
+        </div>
+        <div class="sponsor-box has-logo">
+          <img class="sponsor-logo" src="assets/sponsors/backs-construction.png" alt="Back's Construction Inc." loading="lazy">
+        </div>
         <a class="sponsor-box sponsor-open" href="mailto:acmf7989@gmail.com?subject=Recruit%20Sponsorship">
           <span class="sponsor-open-lead">Spot available</span>
           <span class="sponsor-open-sub">Become a Recruit Sponsor</span>
@@ -281,16 +306,13 @@
       </div>
     </div>
 
-    <!-- CLIENT: these two logos arrived without a sponsorship level in the
-         filename. Move them into the tier above once confirmed. -->
+    <!-- CLIENT: logos that arrived without a sponsorship level. Move each one
+         into the tier above once its level is confirmed. -->
     <div class="sponsor-tier tier-untiered reveal">
       <p class="tier-label">With Thanks To</p>
       <div class="sponsor-grid">
         <div class="sponsor-box has-logo">
-          <img class="sponsor-logo" src="assets/sponsors/am-team-sales.png" alt="A&amp;M Team Sales, Inc." loading="lazy">
-        </div>
-        <div class="sponsor-box has-logo">
-          <img class="sponsor-logo" src="assets/sponsors/dsa-san-diego.jpg" alt="Deputy Sheriffs' Association of San Diego County" loading="lazy">
+          <img class="sponsor-logo" src="assets/sponsors/breakfast-republic.png" alt="Breakfast Republic" loading="lazy">
         </div>
       </div>
     </div>
@@ -413,7 +435,7 @@
   <img class="lightbox-img" id="lightboxImg" src="" alt="">
 </div>
 
-<script src="js/main.js?v=3"></script>
+<script src="js/main.js?v=4"></script>
 
 <!-- Zeffy modal form script (powers the Donate button) -->
 <script src="https://zeffy-scripts.s3.ca-central-1.amazonaws.com/embed-form-script.min.js"></script>

@@ -16,7 +16,7 @@
      cache-control: max-age=14400 (4h), so returning visitors would otherwise
      run a stale main.js — which silently breaks the fundraiser tabs.
      BUMP ?v= ON BOTH FILES whenever styles.css or main.js changes. -->
-<link rel="stylesheet" href="css/styles.css?v=4">
+<link rel="stylesheet" href="css/styles.css?v=5">
 </head>
 <body>
 
@@ -208,18 +208,17 @@
       <a href="mailto:acmf7989@gmail.com" class="btn-outline-navy">Email Us About Sponsorship</a>
     </div>
 
-    <!-- Sponsor tiers. Each tier lists its confirmed logos, then a dashed
-         "spot available" box linking to the sponsorship inbox. -->
+    <!-- Sponsor tiers list confirmed logos only. The sponsorship ask lives in
+         the "Become a Sponsor" box above, so there are no empty slots here. -->
     <div class="sponsor-tier tier-mess-hall reveal">
       <p class="tier-label">Battalion Mess Hall Sponsors</p>
       <div class="sponsor-grid">
         <div class="sponsor-box has-logo">
           <img class="sponsor-logo" src="assets/sponsors/valentines-tacos.png" alt="Valentine's Tacos &amp; Catering" loading="lazy">
         </div>
-        <a class="sponsor-box sponsor-open" href="mailto:acmf7989@gmail.com?subject=Battalion%20Mess%20Hall%20Sponsorship">
-          <span class="sponsor-open-lead">Spot available</span>
-          <span class="sponsor-open-sub">Become a Battalion Mess Hall Sponsor</span>
-        </a>
+        <div class="sponsor-box has-logo">
+          <img class="sponsor-logo" src="assets/sponsors/breakfast-republic.png" alt="Breakfast Republic" loading="lazy">
+        </div>
       </div>
     </div>
 
@@ -238,10 +237,9 @@
         <div class="sponsor-box has-logo is-dark">
           <img class="sponsor-logo" src="assets/sponsors/the-search-bar.jpg" alt="The Search Bar" loading="lazy">
         </div>
-        <a class="sponsor-box sponsor-open" href="mailto:acmf7989@gmail.com?subject=Captain%20Sponsorship">
-          <span class="sponsor-open-lead">Spot available</span>
-          <span class="sponsor-open-sub">Become a Captain Sponsor</span>
-        </a>
+        <div class="sponsor-box has-logo">
+          <img class="sponsor-logo" src="assets/sponsors/royal-polaris.jpg" alt="Royal Polaris Sportfishing" loading="lazy">
+        </div>
       </div>
     </div>
 
@@ -251,20 +249,18 @@
         <div class="sponsor-box has-logo">
           <img class="sponsor-logo" src="assets/sponsors/dsa-san-diego.jpg" alt="Deputy Sheriffs' Association of San Diego County" loading="lazy">
         </div>
-        <a class="sponsor-box sponsor-open" href="mailto:acmf7989@gmail.com?subject=Lieutenant%20Sponsorship">
-          <span class="sponsor-open-lead">Spot available</span>
-          <span class="sponsor-open-sub">Become a Lieutenant Sponsor</span>
-        </a>
       </div>
     </div>
 
     <div class="sponsor-tier tier-sergeant reveal">
       <p class="tier-label">Sergeant Sponsors</p>
       <div class="sponsor-grid">
-        <a class="sponsor-box sponsor-open" href="mailto:acmf7989@gmail.com?subject=Sergeant%20Sponsorship">
-          <span class="sponsor-open-lead">Spot available</span>
-          <span class="sponsor-open-sub">Sponsor a contest</span>
-        </a>
+        <div class="sponsor-box has-logo">
+          <img class="sponsor-logo" src="assets/sponsors/aurelius-golf.png" alt="Aurelius Golf" loading="lazy">
+        </div>
+        <div class="sponsor-box has-logo">
+          <img class="sponsor-logo" src="assets/sponsors/dixon-golf.png" alt="Dixon Golf" loading="lazy">
+        </div>
       </div>
     </div>
 
@@ -280,10 +276,6 @@
         <div class="sponsor-box has-logo">
           <img class="sponsor-logo" src="assets/sponsors/becerril-ac-guys.png" alt="Becerril Air Conditioning Guys" loading="lazy">
         </div>
-        <a class="sponsor-box sponsor-open" href="mailto:acmf7989@gmail.com?subject=Officer%20Sponsorship">
-          <span class="sponsor-open-lead">Spot available</span>
-          <span class="sponsor-open-sub">Become an Officer Sponsor</span>
-        </a>
       </div>
     </div>
 
@@ -299,20 +291,11 @@
         <div class="sponsor-box has-logo">
           <img class="sponsor-logo" src="assets/sponsors/backs-construction.png" alt="Back's Construction Inc." loading="lazy">
         </div>
-        <a class="sponsor-box sponsor-open" href="mailto:acmf7989@gmail.com?subject=Recruit%20Sponsorship">
-          <span class="sponsor-open-lead">Spot available</span>
-          <span class="sponsor-open-sub">Become a Recruit Sponsor</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- CLIENT: logos that arrived without a sponsorship level. Move each one
-         into the tier above once its level is confirmed. -->
-    <div class="sponsor-tier tier-untiered reveal">
-      <p class="tier-label">With Thanks To</p>
-      <div class="sponsor-grid">
         <div class="sponsor-box has-logo">
-          <img class="sponsor-logo" src="assets/sponsors/breakfast-republic.png" alt="Breakfast Republic" loading="lazy">
+          <img class="sponsor-logo" src="assets/sponsors/fishermans-landing.jpg" alt="Fisherman's Landing, San Diego" loading="lazy">
+        </div>
+        <div class="sponsor-box has-logo">
+          <img class="sponsor-logo" src="assets/sponsors/ibac.png" alt="Imperial Beach Athletic Club" loading="lazy">
         </div>
       </div>
     </div>
@@ -371,13 +354,12 @@
           Chula Vista, CA 91910
         </address>
       </div>
+      <!-- CLIENT: add Facebook or X links here once the foundation has them -->
       <div class="social-links">
-        <a href="#">Instagram</a>
-        <a href="#">Facebook</a>
-        <a href="#">Twitter/X</a>
+        <a href="https://www.instagram.com/austincmachitarfoundation/" target="_blank" rel="noopener noreferrer">Instagram</a>
       </div>
       <hr class="contact-rule">
-      <p class="nonprofit-note">The Austin C. Machitar Foundation is a California nonprofit public benefit corporation (EIN 43-3341120).</p>
+      <p class="nonprofit-note">The Austin C. Machitar Foundation is a California nonprofit public benefit corporation (EIN 42-3341120).</p>
       <!-- CLIENT: Add the tax-deductible statement once 501(c)(3) determination is confirmed. -->
       <p class="nonprofit-note">[CLIENT: Tax-deductible statement, pending 501(c)(3) determination]</p>
     </div>
@@ -435,7 +417,7 @@
   <img class="lightbox-img" id="lightboxImg" src="" alt="">
 </div>
 
-<script src="js/main.js?v=4"></script>
+<script src="js/main.js?v=5"></script>
 
 <!-- Zeffy modal form script (powers the Donate button) -->
 <script src="https://zeffy-scripts.s3.ca-central-1.amazonaws.com/embed-form-script.min.js"></script>

@@ -617,7 +617,6 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
 .tier-sergeant   .sponsor-grid > * { flex: 1 1 195px; max-width: 255px; }
 .tier-officer    .sponsor-grid > * { flex: 1 1 175px; max-width: 225px; }
 .tier-recruit    .sponsor-grid > * { flex: 1 1 160px; max-width: 205px; }
-.tier-untiered   .sponsor-grid > * { flex: 1 1 195px; max-width: 255px; }
 .tier-sergeant .sponsor-grid { gap: 1.4rem; }
 .tier-officer  .sponsor-grid,
 .tier-recruit  .sponsor-grid { gap: 1.2rem; }
@@ -628,36 +627,6 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
 .tier-sergeant   .sponsor-box { min-height: 140px; }
 .tier-officer    .sponsor-box { min-height: 120px; }
 .tier-recruit    .sponsor-box { min-height: 110px; }
-.tier-untiered   .sponsor-box { min-height: 140px; }
-
-/* Open slots: the dashed frame reads as "not filled yet" and the whole box is
-   the mailto target. */
-.sponsor-open {
-  flex-direction: column;
-  gap: 0.35rem;
-  text-decoration: none;
-  color: var(--color-muted);
-  transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
-}
-.sponsor-open:hover,
-.sponsor-open:focus-visible {
-  border-color: var(--color-gold);
-  color: var(--color-navy);
-  transform: translateY(-2px);
-}
-.sponsor-open:focus-visible { outline: 3px solid var(--color-gold-bright); outline-offset: 3px; }
-.sponsor-open-lead {
-  font-family: 'Roboto Mono', monospace;
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-gold);
-}
-.sponsor-open-sub {
-  font-family: 'Source Sans 3', sans-serif;
-  font-size: 0.9rem;
-  line-height: 1.35;
-}
 
 /* ===== Flyer slideshow ===== */
 .flyer-slider { margin-top: 1rem; }
@@ -1081,7 +1050,6 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
 .tier-sergeant   .sponsor-box.has-logo { border-width: 2px; box-shadow: 4px 4px 0 var(--color-gold); padding: 1.3rem; }
 .tier-officer    .sponsor-box.has-logo { border-width: 2px; box-shadow: 3px 3px 0 var(--color-gold); padding: 1.1rem; }
 .tier-recruit    .sponsor-box.has-logo { border-width: 2px; box-shadow: 3px 3px 0 var(--color-gold); padding: 1rem; }
-.tier-untiered   .sponsor-box.has-logo { border-width: 2px; box-shadow: 4px 4px 0 var(--color-gold); padding: 1.3rem; }
 
 /* The Search Bar's mark is supplied on a solid black field, so the tile takes
    that ground instead of stranding a black rectangle on white. */
@@ -1099,7 +1067,6 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
 .tier-sergeant   .sponsor-logo { max-height: 115px; }
 .tier-officer    .sponsor-logo { max-height: 95px; }
 .tier-recruit    .sponsor-logo { max-height: 85px; }
-.tier-untiered   .sponsor-logo { max-height: 115px; }
 .sponsor-name {
   display: block;
   margin-top: 0.6rem;

@@ -1051,8 +1051,8 @@ h1, h2, h3, h4 { font-family: 'Playfair Display', serif; line-height: 1.15; }
 .tier-officer    .sponsor-box.has-logo { border-width: 2px; box-shadow: 3px 3px 0 var(--color-gold); padding: 1.1rem; }
 .tier-recruit    .sponsor-box.has-logo { border-width: 2px; box-shadow: 3px 3px 0 var(--color-gold); padding: 1rem; }
 
-/* The Search Bar's mark is supplied on a solid black field, so the tile takes
-   that ground instead of stranding a black rectangle on white. */
+/* The Search Bar and Bad Birdie marks are supplied on a solid black field, so
+   the tile takes that ground instead of stranding a black rectangle on white. */
 .sponsor-box.has-logo.is-dark { background: #000; }
 
 .sponsor-logo {
